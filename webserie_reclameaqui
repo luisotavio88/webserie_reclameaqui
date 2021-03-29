@@ -1,0 +1,78 @@
+WEBSÉRIE RECLAME AQUI COM CIÊNCIA DE DADOS
+
+OBJETIVO DA WEBSÉRIE:
+
+TE PREPARAR PARA CONSTRUIR UM PROJETO COMPLETO DE CIÊNCIA DE DADOS
+
+-> OBTER OS DADOS
+-> ORGANIZAR/LIMPAR OS DADOS
+-> EXPLORAR OS DADOS
+-> ANALISAR OS DADOS
+-> CRIAR MODELOS OU ANÁLISES NECESSÁRIAS
+-> APRESENTAR OS RESULTADOS DE FORMA SIMPLES, CLARA E RICA.
+
+
+-> OBJETIVO DO EPISÓDIO #1
+
+-> OBTER OS DADOS DE E-COMMERCE DO SITE RECLAME AQUI
+-> CONSTRUIR UM CONJUNTO DE DADOS LIMPO E DEIXÁ-LO PRONTO PARA A EXPLORAÇÃO DE DADOS
+
+# 
+
+-> ROTEIRO DO EPISÓDIO #1
+
+1 - o que é webscraping e como fazer na linguagem R?
+2 - instalar os programas necessários
+3 - configurações necessárias
+4 - entrar no site do Reclame Aqui e buscar o que nos interessa
+5 - organizar tudo em conjuntos de dados
+6 - fazer a limpeza dos dados, caso seja necessário
+7 - SEGREDO PARA VOCÊ CONSEGUIR FAZER IGUALZINHO NA SUA CASA
+
+
+
+
+
+
+1 - o que é webscraping e como fazer na linguagem R?
+
+O que é? 
+
+Webscraping é você extrair dados de sites da Internet usando programação.
+
+Como fazer na linguagem R?
+
+Bibliotecas - rvest ou RSelenium
+
+-> Páginas estáticas
+
+Todos os dados são carregados quando lemos o código html
+
+Exemplo: https://www.tripadvisor.com/Restaurants-g303576-Florianopolis_State_of_Santa_Catarina.html
+
+-> Páginas dinâmicas 
+
+Dados carregados via JavaScript
+
+Exemplo: https://www.reclameaqui.com.br/empresa/americanas-marketplace/
+
+
+#
+
+
+2 - instalar os programas necessários
+
+-> Biblioteca RSelenium
+
+-> Selenium web drivers
+
+https://chromedriver.chromium.org/downloads
+
+-> Extensão do Chrome para facilitar a vida:
+
+https://chrome.google.com/webstore/detail/selectorgadget/mhjhnkcfbdhnjickkkdbjoemdmbfginb?hl=pt-BR
+
+#
+
+3 - configurações necessárias
+
