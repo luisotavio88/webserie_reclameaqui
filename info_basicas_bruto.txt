@@ -1,0 +1,4 @@
+"empresa"	"indice_solucao"	"nao_respondidas"	"avaliadas"	"nota"	"nota_consumidor"	"percent_voltariam"	"qnt_reclamacoes"	"link_loja"
+"Ponto Frio - Loja Online"	"79.4%"	" 32"	" 3204"	"7.2"	"5.71"	"57.8%"	"10510"	"https://www.reclameaqui.com.br/empresa/ponto-frio-loja-online/"
+"Casas Bahia - Loja Online"	"77%"	" 62"	" 8791"	"7.0"	"5.29"	"53.3%"	"32310"	"https://www.reclameaqui.com.br/empresa/casas-bahia-loja-online/"
+"americanas - Loja Online"	"89.7%"	" 596"	" 9248"	"8.4"	"7.35"	"77.5%"	"24013"	"https://www.reclameaqui.com.br/empresa/americanas-com-loja-online/"

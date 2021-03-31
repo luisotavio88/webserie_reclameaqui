@@ -1,0 +1,151 @@
+"empresa"	"titulo_reclamacao"	"status_reclamacao"	"local_reclamacao"	"tempo_reclamacao"	"minutos"
+"Ponto Frio - Loja Online"	"PONTOS DO PONTO FRIO NÃO CREDITADOS"	"Não respondida"	"Canoinhas"	"Há 9 horas"	540
+"Ponto Frio - Loja Online"	"PONTOS NAO CREDITADOS"	"Não respondida"	"Fortaleza"	"Há 10 horas"	600
+"Ponto Frio - Loja Online"	"Não entregam a minha televisão"	"Não respondida"	"São Paulo"	"Há 10 horas"	600
+"Ponto Frio - Loja Online"	"Atendimento DEPLORAVEL e prazos insustentáveis"	"Não respondida"	"Rio de Janeiro"	"Há 10 horas"	600
+"Ponto Frio - Loja Online"	"Pontuação não creditada corretamente"	"Não respondida"	"Manaus"	"Há 10 horas"	600
+"Ponto Frio - Loja Online"	"Propaganda Enganosa de Frete"	"Não respondida"	"Brasília"	"Há 10 horas"	600
+"Ponto Frio - Loja Online"	"Não cumpriram duas vezes o prazo e agora ninguém sabe onde está meu pedido!"	"Não respondida"	"Curitiba"	"Há 10 horas"	600
+"Ponto Frio - Loja Online"	"Produto faltando peças"	"Não respondida"	"Brasília"	"Há 10 horas"	600
+"Ponto Frio - Loja Online"	"PRAZO DE ENTREGA [Editado pelo Reclame Aqui]!"	"Não respondida"	"São Paulo"	"Há 11 horas"	660
+"Ponto Frio - Loja Online"	"Devolução de valores compra cancelada"	"Não respondida"	"Rio de Janeiro"	"Há 11 horas"	660
+"Ponto Frio - Loja Online"	"PRODUTO ENTREGUE SEM FUNCIONAR !!"	"Não respondida"	"São Paulo"	"Há 7 horas"	420
+"Ponto Frio - Loja Online"	"PROPAGANDA ENGANOSA"	"Não respondida"	"Sorocaba"	"Há 7 horas"	420
+"Ponto Frio - Loja Online"	"Milhas tudo azul"	"Não respondida"	"Campinas"	"Há 7 horas"	420
+"Ponto Frio - Loja Online"	"Comprei e não enviaram o produto!!"	"Não respondida"	"Rio de Janeiro"	"Há 8 horas"	480
+"Ponto Frio - Loja Online"	"Vários cancelamentos de uma compra de uma TV"	"Não respondida"	"Itaguaí"	"Há 8 horas"	480
+"Ponto Frio - Loja Online"	"Demora para realizar  a troca do produto"	"Não respondida"	"Contagem"	"Há 8 horas"	480
+"Ponto Frio - Loja Online"	"QUERO MEU DINHEIRO DE VOLTA"	"Não respondida"	"Maracanaú"	"Há 9 horas"	540
+"Ponto Frio - Loja Online"	"Entrega errada"	"Não respondida"	"Rio de Janeiro"	"Há 9 horas"	540
+"Ponto Frio - Loja Online"	"TRANSPORTADORA MENTE QUE FOI ATÉ O LOCAL E NÃO FOI"	"Não respondida"	"São Paulo"	"Há 9 horas"	540
+"Ponto Frio - Loja Online"	"Carta de correção"	"Não respondida"	"Sorocaba"	"Há 9 horas"	540
+"Ponto Frio - Loja Online"	"O prazo do reembolso venceu e a empresa não devolve meu dinheiro"	"Não respondida"	"Jucurutu"	"Há 5 horas"	300
+"Ponto Frio - Loja Online"	"Não comprem na Ponto Frio"	"Não respondida"	"São Paulo"	"Há 5 horas"	300
+"Ponto Frio - Loja Online"	"Entrega de produto quebrado e muita demora para resolver o problema."	"Não respondida"	"São Paulo"	"Há 5 horas"	300
+"Ponto Frio - Loja Online"	"Falta de atualização do site de lista de casamento"	"Não respondida"	"Armazém"	"Há 5 horas"	300
+"Ponto Frio - Loja Online"	"BATERIA DO NOTEBOOK SONY VAIO NOVO NÃO DURA NEM UMA HORA"	"Não respondida"	"Campo Grande"	"Há 5 horas"	300
+"Ponto Frio - Loja Online"	"pontos black friday"	"Não respondida"	"Tietê"	"Há 5 horas"	300
+"Ponto Frio - Loja Online"	"Aguardando quase 4 meses por um estorno"	"Não respondida"	"Rio de Janeiro"	"Há 5 horas"	300
+"Ponto Frio - Loja Online"	"Atendimento horrível"	"Não respondida"	"Contagem"	"Há 6 horas"	360
+"Ponto Frio - Loja Online"	"Pontuação não creditada"	"Não respondida"	"Marabá"	"Há 6 horas"	360
+"Ponto Frio - Loja Online"	"Realizei a compra e o produto ainda chegou"	"Não respondida"	"Salvador"	"Há 7 horas"	420
+"Ponto Frio - Loja Online"	"Cooktop com uma das bocas amassada, gás vazando"	"Não respondida"	"Guarulhos"	"Há 3 horas"	180
+"Ponto Frio - Loja Online"	"Não foi entregue para mim a compradora"	"Não respondida"	"Tocantins"	"Há 3 horas"	180
+"Ponto Frio - Loja Online"	"Comprei, paguei, mas não recebi"	"Não respondida"	"Rio de Janeiro"	"Há 4 horas"	240
+"Ponto Frio - Loja Online"	"A mercadoria está atrasada!"	"Não respondida"	"São Paulo"	"Há 4 horas"	240
+"Ponto Frio - Loja Online"	"Muito Atraso na entrega"	"Não respondida"	"Caraguatatuba"	"Há 4 horas"	240
+"Ponto Frio - Loja Online"	"MERCADORIA NÃO ENTREGUE"	"Não respondida"	"Blumenau"	"Há 4 horas"	240
+"Ponto Frio - Loja Online"	"Atraso na entrega"	"Não respondida"	"Itaguaí"	"Há 4 horas"	240
+"Ponto Frio - Loja Online"	"PONTO FRIO SE APOSSOU DO VALOR PAGO E NÃO QUER DEVOLVER"	"Não respondida"	"Curitiba"	"Há 4 horas"	240
+"Ponto Frio - Loja Online"	"Entrega não efetuada/[Editado pelo Reclame Aqui]/[Editado pelo Reclame Aqui] transportadora ponto frio [Editado pelo Reclame Aqui]res"	"Não respondida"	"Rio de Janeiro"	"Há 4 horas"	240
+"Ponto Frio - Loja Online"	"Cobrança em Duplicidade e não entrega do produto"	"Não respondida"	"Parauapebas"	"Há 5 horas"	300
+"Ponto Frio - Loja Online"	"Reembolso do pedido 258794513"	"Não respondida"	"Uberlândia"	"Há 20 minutos"	20
+"Ponto Frio - Loja Online"	"Sem informações sobre a entrega"	"Não respondida"	"Serra Talhada"	"Há 20 minutos"	20
+"Ponto Frio - Loja Online"	"Não recebi o produto e não estornaram o valor depois do cancelamento"	"Não respondida"	"Curitiba"	"Há 26 minutos"	26
+"Ponto Frio - Loja Online"	"Não recebi o produto"	"Não respondida"	"Teresina"	"Há 36 minutos"	36
+"Ponto Frio - Loja Online"	"Alteração de Endereço de retirada"	"Não respondida"	"Esteio"	"Há 1 hora"	60
+"Ponto Frio - Loja Online"	"PontoFrio não realiza a troca do meu produto. Descaso com o Cliente!"	"Não respondida"	"Rio de Janeiro"	"Há 2 horas"	120
+"Ponto Frio - Loja Online"	"Erro de número de cartão poderia ser revertido"	"Não respondida"	"São Paulo"	"Há 2 horas"	120
+"Ponto Frio - Loja Online"	"ATRASA ENTREGAS E MENTE NA JUSTIFICATIVA"	"Não respondida"	"Barueri"	"Há 2 horas"	120
+"Ponto Frio - Loja Online"	"Ponto Frio não entrega meu produto"	"Não respondida"	"Juiz de Fora"	"Há 2 horas"	120
+"Ponto Frio - Loja Online"	"Comprei um iPhone 11 e recebi uma xícara"	"Não respondida"	"Divinópolis"	"Há 2 horas"	120
+"Casas Bahia - Loja Online"	"Comprei nas Casas Bahia, porém, meu produto não foi entregue"	"Não respondida"	"São Paulo"	"Há 3 horas"	180
+"Casas Bahia - Loja Online"	"Desrespeito com o Consumidor ! Atrasando a entrega !"	"Não respondida"	"Goiânia"	"Há 3 horas"	180
+"Casas Bahia - Loja Online"	"ESTORNO NÃO CONDIZ COM O VALOR QUE PAGUEI"	"Não respondida"	"Feira de Santana"	"Há 3 horas"	180
+"Casas Bahia - Loja Online"	"Comprei Produto (2 unidades) Falsificado."	"Não respondida"	"São Paulo"	"Há 3 horas"	180
+"Casas Bahia - Loja Online"	"Mau atendimento"	"Não respondida"	"São Paulo"	"Há 3 horas"	180
+"Casas Bahia - Loja Online"	"Cancelamento do pedido sem satisfação"	"Não respondida"	"Pato Branco"	"Há 3 horas"	180
+"Casas Bahia - Loja Online"	"nao recebi meu produto"	"Não respondida"	"Cubatão"	"Há 3 horas"	180
+"Casas Bahia - Loja Online"	"Cancelamento Não Solicitado"	"Não respondida"	"Hidrolândia"	"Há 3 horas"	180
+"Casas Bahia - Loja Online"	"Sofá extremamente desconfortável"	"Não respondida"	"Araraquara"	"Há 3 horas"	180
+"Casas Bahia - Loja Online"	"Produto não recebido"	"Não respondida"	"Belo Horizonte"	"Há 3 horas"	180
+"Casas Bahia - Loja Online"	"Atraso na entrega"	"Não respondida"	"Viçosa"	"Há 2 horas"	120
+"Casas Bahia - Loja Online"	"Não entregaram meu produto"	"Não respondida"	"Rio de Janeiro"	"Há 2 horas"	120
+"Casas Bahia - Loja Online"	"Produto errado"	"Não respondida"	"Mirassol"	"Há 2 horas"	120
+"Casas Bahia - Loja Online"	"Entrega não realizada"	"Não respondida"	"Vargem Grande Paulista"	"Há 2 horas"	120
+"Casas Bahia - Loja Online"	"Nunca compre nas casas bahia"	"Não respondida"	"Paulista"	"Há 2 horas"	120
+"Casas Bahia - Loja Online"	"Pedido cancelado"	"Não respondida"	"Moreno"	"Há 2 horas"	120
+"Casas Bahia - Loja Online"	"Não tem responsabilidade com seus clientes"	"Não respondida"	"Salvador"	"Há 2 horas"	120
+"Casas Bahia - Loja Online"	"Recebimento de SMS para compras online"	"Não respondida"	"Osasco"	"Há 3 horas"	180
+"Casas Bahia - Loja Online"	"Mercadoria nao chegou"	"Não respondida"	"São João de Meriti"	"Há 3 horas"	180
+"Casas Bahia - Loja Online"	"PROPAGANDA ENGANKSA"	"Não respondida"	"Guarulhos"	"Há 3 horas"	180
+"Casas Bahia - Loja Online"	"Pedido cancelado sem justificativa"	"Não respondida"	"São Paulo"	"Há 2 horas"	120
+"Casas Bahia - Loja Online"	"Cobranças Indevidas e Descaso em retirar meu número"	"Não respondida"	"Rio de Janeiro"	"Há 2 horas"	120
+"Casas Bahia - Loja Online"	"Casas Bahia não cumpre prazo"	"Não respondida"	"Brasília"	"Há 2 horas"	120
+"Casas Bahia - Loja Online"	"Monitor HQ"	"Não respondida"	"Embu-Guaçu"	"Há 2 horas"	120
+"Casas Bahia - Loja Online"	"Juros e multa"	"Não respondida"	"São Gonçalo"	"Há 2 horas"	120
+"Casas Bahia - Loja Online"	"Desrespeito"	"Não respondida"	"Araguaína"	"Há 2 horas"	120
+"Casas Bahia - Loja Online"	"Produto diverso entregue"	"Não respondida"	"Cianorte"	"Há 2 horas"	120
+"Casas Bahia - Loja Online"	"PAGAMENTO EM ANÁLISE A 5 DIAS MESMO COM VALOR JÁ DEBITADO DA ENTRADA E CARTÃO DE CRÉDITO"	"Não respondida"	"Embu das Artes"	"Há 2 horas"	120
+"Casas Bahia - Loja Online"	"Cartão casas Bahia,cadê minha senha."	"Não respondida"	"Serra"	"Há 2 horas"	120
+"Casas Bahia - Loja Online"	"Indignado com as casa Bahia"	"Não respondida"	"Embu"	"Há 2 horas"	120
+"Casas Bahia - Loja Online"	"Devolução de produto. Produto não coletado e valor não estornado"	"Não respondida"	"Vila Valério"	"Há 1 hora"	60
+"Casas Bahia - Loja Online"	"Estorno incompleto da Compra na loja online Casas Bahia 27/06/2020"	"Não respondida"	"Tubarão"	"Há 1 hora"	60
+"Casas Bahia - Loja Online"	"Smartphone não recebido"	"Não respondida"	"Valparaíso de Goiás"	"Há 1 hora"	60
+"Casas Bahia - Loja Online"	"Faltando peças da esteira eletrônica"	"Não respondida"	"Franca"	"Há 1 hora"	60
+"Casas Bahia - Loja Online"	"Nao consigo alterar o cadastro"	"Não respondida"	"Abadia dos Dourados"	"Há 1 hora"	60
+"Casas Bahia - Loja Online"	"Descaso total com o consumidor"	"Não respondida"	"Curitiba"	"Há 1 hora"	60
+"Casas Bahia - Loja Online"	"ESTOU SOLICITANDO O CANCELAMENTO DE UM PEDIDO EM DUPLICIDADE"	"Não respondida"	"Aracaju"	"Há 1 hora"	60
+"Casas Bahia - Loja Online"	"Tentativa de comprar um celular e pouco caso"	"Não respondida"	"Santo André"	"Há 1 hora"	60
+"Casas Bahia - Loja Online"	"ABSURDO! Não devolveram meu dinheiro há mais de 1 mês!!"	"Não respondida"	"São Paulo"	"Há 1 hora"	60
+"Casas Bahia - Loja Online"	"Não recebi o produto"	"Não respondida"	"São Paulo"	"Há 1 hora"	60
+"Casas Bahia - Loja Online"	"Login não funciona"	"Não respondida"	"São Paulo"	"Há 4 minutos"	4
+"Casas Bahia - Loja Online"	"TV Samsung qled 55q80t com tela trincada e imagem toda falhada"	"Não respondida"	"Blumenau"	"Há 8 minutos"	8
+"Casas Bahia - Loja Online"	"Baixa de pagamento"	"Não respondida"	"São Paulo"	"Há 14 minutos"	14
+"Casas Bahia - Loja Online"	"Não cumprimento de Entrega Agendada"	"Não respondida"	"Mogi das Cruzes"	"Há 25 minutos"	25
+"Casas Bahia - Loja Online"	"Não recebi meu produto"	"Não respondida"	"Viçosa"	"Há 26 minutos"	26
+"Casas Bahia - Loja Online"	"CELULAR SANSUNG GALAX A10S"	"Não respondida"	"Aporá"	"Há 27 minutos"	27
+"Casas Bahia - Loja Online"	"VVLog marcou como entregue o produto mas não entregou"	"Não respondida"	"Rio de Janeiro"	"Há 37 minutos"	37
+"Casas Bahia - Loja Online"	"Negociação"	"Não respondida"	"Guarulhos"	"Há 40 minutos"	40
+"Casas Bahia - Loja Online"	"Casas bahia uma vergonha com consumidos durante essa pandemia"	"Não respondida"	"Salvador"	"Há 1 hora"	60
+"Casas Bahia - Loja Online"	"Demora na entrega"	"Não respondida"	"Itanhaém"	"Há 1 hora"	60
+"americanas - Loja Online"	"DEVOLUÇÃO DO PRODUTO/PRAZO DE ARREPENDIMENTO"	"Não respondida"	"Fortaleza"	"Há 1 hora"	60
+"americanas - Loja Online"	"Atendimento Péssimo"	"Não respondida"	"Formiga"	"Há 1 hora"	60
+"americanas - Loja Online"	"Pedido não entregue"	"Não respondida"	"Rio de Janeiro"	"Há 1 hora"	60
+"americanas - Loja Online"	"Americanas me vendeu um iPhone com problemas e não quer trocar"	"Não respondida"	"Porto Alegre"	"Há 1 hora"	60
+"americanas - Loja Online"	"A PIOR compra online da minha vida"	"Não respondida"	"Fortaleza"	"Há 1 hora"	60
+"americanas - Loja Online"	"Comprei um Mizuno Prophecy 9 e veio produto PIRATA"	"Não respondida"	"São Paulo"	"Há 1 hora"	60
+"americanas - Loja Online"	"Entrega em 3 horas é a maior enganação"	"Não respondida"	"Ribeirão Preto"	"Há 1 hora"	60
+"americanas - Loja Online"	"Entrega faltando um Ovo de Páscoa"	"Não respondida"	"Goiânia"	"Há 1 hora"	60
+"americanas - Loja Online"	"Pedido cancelado"	"Não respondida"	"Capão da Canoa"	"Há 1 hora"	60
+"americanas - Loja Online"	"Demora na entrega"	"Não respondida"	"São Paulo"	"Há 1 hora"	60
+"americanas - Loja Online"	"Indignação"	"Não respondida"	"Rio de Janeiro"	"Há 36 minutos"	36
+"americanas - Loja Online"	"Mercadoria entregue no endereço errado."	"Não respondida"	"São Paulo"	"Há 44 minutos"	44
+"americanas - Loja Online"	"Cancelamento de pedido"	"Não respondida"	"Rio de Janeiro"	"Há 1 hora"	60
+"americanas - Loja Online"	"Produto veio errado e não consigo resolver nem por telefone, site ou loja fisica"	"Não respondida"	"Botucatu"	"Há 1 hora"	60
+"americanas - Loja Online"	"Impossível cancelar a compra"	"Não respondida"	"Fortaleza"	"Há 1 hora"	60
+"americanas - Loja Online"	"ABSURDO"	"Não respondida"	"Rio de Janeiro"	"Há 1 hora"	60
+"americanas - Loja Online"	"Pix Pago e produto indisponível após pagamento"	"Não respondida"	"São Paulo"	"Há 1 hora"	60
+"americanas - Loja Online"	"Troca ou reembolso"	"Não respondida"	"Guarulhos"	"Há 1 hora"	60
+"americanas - Loja Online"	"Preciso se resposta ja tem 2 messes tentando resolver e nafa"	"Não respondida"	"Goianésia do Pará"	"Há 1 hora"	60
+"americanas - Loja Online"	"PEDIDO CANCELADO SEM SOLICITAÇÃO DO CLIENTE"	"Não respondida"	"Rio de Janeiro"	"Há 1 hora"	60
+"americanas - Loja Online"	"QUERO DEVOLVER UM PRODUTO"	"Não respondida"	"Jandira"	"Há 20 minutos"	20
+"americanas - Loja Online"	"NÃO ENTREGARAM O PRODUTO NEM DEVOLVERAM O DINHEIRO"	"Não respondida"	"São Paulo"	"Há 23 minutos"	23
+"americanas - Loja Online"	"Não recebi o embolso"	"Não respondida"	"Rio de Janeiro"	"Há 24 minutos"	24
+"americanas - Loja Online"	"Fui vítima de [Editado pelo Reclame Aqui] no app"	"Não respondida"	"Rio de Janeiro"	"Há 25 minutos"	25
+"americanas - Loja Online"	"pedido não entregue, mas no site consta que foi entregue"	"Não respondida"	"Campinas"	"Há 26 minutos"	26
+"americanas - Loja Online"	"Entrega não realizada"	"Não respondida"	"Nova Iguaçu"	"Há 26 minutos"	26
+"americanas - Loja Online"	"Produto comprado na Site da lojas americanas ( tudotemperfume)"	"Não respondida"	"Belo Horizonte"	"Há 27 minutos"	27
+"americanas - Loja Online"	"Pedido entregue errado"	"Não respondida"	"Barra Mansa"	"Há 28 minutos"	28
+"americanas - Loja Online"	"Entrega com produto faltando"	"Não respondida"	"Rio de Janeiro"	"Há 35 minutos"	35
+"americanas - Loja Online"	"Indignação"	"Não respondida"	"Rio de Janeiro"	"Há 36 minutos"	36
+"americanas - Loja Online"	"Cancelada compra dia 04/01/2021 e até agora aguardo estorno do valor na minha fatura de cartão."	"Não respondida"	"Campinas"	"Há 6 minutos"	6
+"americanas - Loja Online"	"NAO ENTREGOU O PEDIDO EM 3 HORAS"	"Não respondida"	"Salvador"	"Há 9 minutos"	9
+"americanas - Loja Online"	"lojas fechadas"	"Não respondida"	"Curitiba"	"Há 10 minutos"	10
+"americanas - Loja Online"	"Sem informaçao sobre atraso de entrega"	"Não respondida"	"São José dos Campos"	"Há 11 minutos"	11
+"americanas - Loja Online"	"Americanas prometeu entrega na Páscoa em 3 horas e não cumpriu"	"Não respondida"	"Colombo"	"Há 11 minutos"	11
+"americanas - Loja Online"	"PRECISO RECEBER O DINHEIRO DO VALE COMPRAS"	"Não respondida"	"Carmolândia"	"Há 12 minutos"	12
+"americanas - Loja Online"	"Americanas não me responde sobre meu processo de cancelamento"	"Não respondida"	"Goiana"	"Há 13 minutos"	13
+"americanas - Loja Online"	"O anúncio era de 200ml e o produto é de 100ml"	"Não respondida"	"Paulínia"	"Há 17 minutos"	17
+"americanas - Loja Online"	"Meu produto veio quebrado"	"Não respondida"	"Ipatinga"	"Há 17 minutos"	17
+"americanas - Loja Online"	"Não recebi o pedido no prazo prometido"	"Não respondida"	"Fortaleza"	"Há 18 minutos"	18
+"americanas - Loja Online"	"Expor produtos indisponíveis"	"Não respondida"	"São Paulo"	"Há 1 minuto"	1
+"americanas - Loja Online"	"Atraso na entrega"	"Não respondida"	"Irati"	"Há 1 minuto"	1
+"americanas - Loja Online"	"Pedido não Entregue"	"Não respondida"	"São Paulo"	"Há 2 minutos"	2
+"americanas - Loja Online"	"COBROU O FRETE E OPTEI NO ATO DA COMPRA BUSCAR NA LOJA"	"Não respondida"	"Rio de Janeiro"	"Há 2 minutos"	2
+"americanas - Loja Online"	"Estorno não feito"	"Não respondida"	"Salvador"	"Há 4 minutos"	4
+"americanas - Loja Online"	"Não recebimento do produto"	"Não respondida"	"Salvador"	"Há 5 minutos"	5
+"americanas - Loja Online"	"Não recebi o produto"	"Não respondida"	"São Paulo"	"Há 5 minutos"	5
+"americanas - Loja Online"	"Não emitem minhas notas fiscais"	"Não respondida"	"São Paulo"	"Há 6 minutos"	6
+"americanas - Loja Online"	"Não consigo desbloquear o vale compras Americanas"	"Não respondida"	"Vitória de Santo Antão"	"Há 6 minutos"	6
+"americanas - Loja Online"	"Cancelada compra dia 04/01/2021 e até agora aguardo estorno do valor na minha fatura de cartão."	"Não respondida"	"Campinas"	"Há 6 minutos"	6

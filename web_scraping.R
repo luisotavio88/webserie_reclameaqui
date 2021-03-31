@@ -5,9 +5,9 @@ library(dplyr)
 library(rvest)
 library(RSelenium)
 
-binman::list_versions("chromedriver")
 
 # iniciar um SERVIDOR SELENIUM E O NAVEGADOR
+#colocar a mesma versão que fez download
 rD <- rsDriver(browser="chrome", port=4546L, chromever = "89.0.4389.23")
 
 remDr <- rD[["client"]] #NAVEGADOR
@@ -22,8 +22,11 @@ link_lojas<-c("https://www.reclameaqui.com.br/empresa/americanas-com-loja-online
 
 
 for(link_loja in link_lojas){
-  
+  # link_loja<-link_lojas[1]  
   remDr$navigate(link_loja)
+  
+  # remDr$navigate("https://www.reclameaqui.com.br/empresa/americanas-com-loja-online/")
+  
   
   #ler todo o código
   codigo<- read_html(remDr$getPageSource()[[1]])
@@ -31,6 +34,7 @@ for(link_loja in link_lojas){
   empresa <- codigo %>% 
     html_nodes(".short-name") %>%
     html_text()
+  
   
   nota <- codigo %>% 
     html_nodes(".score b") %>%
@@ -64,10 +68,11 @@ for(link_loja in link_lojas){
     html_nodes(".col-sm-6+ .col-sm-6 b") %>%
     html_text()
   
-  info_basicas <-rbind(
-    data.frame(empresa,indice_solucao,nao_respondidas,
-               avaliadas,nota,nota_consumidor,percent_voltariam,
-               qnt_reclamacoes,link_loja), info_basicas)
+  tabela_empresa <- data.frame(empresa,indice_solucao,nao_respondidas,
+                               avaliadas,nota,nota_consumidor,percent_voltariam,
+                               qnt_reclamacoes,link_loja)
+  
+  info_basicas <-rbind(tabela_empresa,info_basicas)
   
 }
 
@@ -77,46 +82,47 @@ for(link_loja in link_lojas){
 ############## COMEÇO DA BUSCA POR RECLAMAÇÕES #####
 
 link_reclamacoes<-paste0(link_lojas,"lista-reclamacoes/")
-
+# 
 info_reclamacoes <-data.frame()
 
-# for(link_pagina in link_reclamacoes){
-#   
-#   for(pagina in 1:2){    
-    remDr$navigate("https://www.reclameaqui.com.br/empresa/americanas-com-loja-online/lista-reclamacoes/?pagina=1")
-    
-    # remDr$navigate(paste0(link_pagina,"?pagina=",pagina))
-    
-    #ler todo o código
-    codigo_reclamacoes<- read_html(remDr$getPageSource()[[1]])
-    
-    empresa<-codigo_reclamacoes %>% 
-      html_nodes(".company-title .ng-binding") %>%
-      html_text()
-    
-    titulo_reclamacao<-codigo_reclamacoes %>% 
-      html_nodes(".text-title") %>%
-      html_text()
-    
-    status_reclamacao<-codigo_reclamacoes %>% 
-      html_nodes(".status-text") %>%
-      html_text()
-    
-    local_reclamacao<-codigo_reclamacoes %>% 
-      html_nodes("#complains-anchor-top .hidden-xs.ng-binding") %>%
-      html_text()
-    
-    
-    tempo_reclamacao<-codigo_reclamacoes %>% 
-      html_nodes(".hourAgo") %>%
-      html_text()
-    
-    info_reclamacoes <-rbind(data.frame(empresa,titulo_reclamacao,
-                                        status_reclamacao,local_reclamacao,
-                                        tempo_reclamacao)
-      ,info_reclamacoes)
-#   }
-# }
+for(link_pagina in link_reclamacoes){
+
+for(pagina in 1:5){
+# remDr$navigate("https://www.reclameaqui.com.br/empresa/americanas-com-loja-online/lista-reclamacoes/?pagina=1")
+
+remDr$navigate(paste0(link_pagina,"?pagina=",pagina))
+
+#ler todo o código
+codigo_reclamacoes<- read_html(remDr$getPageSource()[[1]])
+
+empresa<-codigo_reclamacoes %>% 
+  html_nodes(".company-title .ng-binding") %>%
+  html_text()
+
+titulo_reclamacao<-codigo_reclamacoes %>% 
+  html_nodes(".text-title") %>%
+  html_text()
+
+status_reclamacao<-codigo_reclamacoes %>% 
+  html_nodes(".status-text") %>%
+  html_text()
+
+local_reclamacao<-codigo_reclamacoes %>% 
+  html_nodes("#complains-anchor-top .hidden-xs.ng-binding") %>%
+  html_text()
+
+
+tempo_reclamacao<-codigo_reclamacoes %>% 
+  html_nodes(".hourAgo") %>%
+  html_text()
+
+info_pagina<-data.frame(empresa,titulo_reclamacao,
+                        status_reclamacao,local_reclamacao,tempo_reclamacao)
+info_reclamacoes <-rbind(info_pagina,info_reclamacoes)
+
+}
+}
+
 ############## FIM DA BUSCA POR RECLAMAÇÕES ######
 
 
@@ -124,8 +130,7 @@ remDr$close()
 rD$server$stop()
 rm(rD)
 
+write.table(info_reclamacoes,"info_reclamacoes.txt",sep = "\t",fileEncoding = "utf8",row.names = F)
+
 
 ### SUBIR PARA O GITHUB
-
-# https://www.youtube.com/watch?v=zksMz0lIH_Q
-

@@ -19,6 +19,9 @@ TE PREPARAR PARA CONSTRUIR UM PROJETO COMPLETO DE CIÊNCIA DE DADOS
 
 # 
 
+
+
+
 -> ROTEIRO DO EPISÓDIO #1
 
 1 - o que é webscraping e como fazer na linguagem R?
@@ -54,7 +57,7 @@ Exemplo: https://www.tripadvisor.com/Restaurants-g303576-Florianopolis_State_of_
 
 Dados carregados via JavaScript
 
-Exemplo: https://www.reclameaqui.com.br/empresa/americanas-marketplace/
+Exemplo: https://www.reclameaqui.com.br/empresa/americanas-com-loja-online/
 
 
 #
