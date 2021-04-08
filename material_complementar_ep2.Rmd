@@ -1,0 +1,446 @@
+---
+title: "Websérie Reclame aqui com Ciência de Dados | Episódio #2"
+author: "luisotavio.pro"
+date: "05/03/2021"
+output:
+  rmarkdown::html_document:
+  theme: lumen
+---
+
+(esse material complementar foi 100% produzido usando a linguagem R)
+
+# Como analisar os dados, criar gráficos e análise de texto com a linguagem R | Reclame Aqui com Ciência de Dados #2
+
+Esse é um material complementar, ou seja, não substitui você assistir ao Episódio #2.
+
+[**Clique aqui para assistir o Episódio 2 da Websérie**](https://youtu.be/21T9J23R1T0){target="_blank"}
+
+OBJETIVO DO EPISÓDIO #2
+
+  - COMPARAR OS RESULTADOS DAS EMPRESAS
+
+  - AVALIAR PONTOS FORTES E PONTOS FRACOS DE CADA EMPRESA
+
+  - AVALIAR POSSÍVEL RELAÇÃO ENTRE AS PALAVRAS USADAS PELO CLIENTE NA RECLAMAÇÃO E A SOLUÇÃO (OU NÃO) DO CASO
+
+### 1 - LEITURA DOS CONJUNTOS DE DADOS OBTIDOS POR WEBSCRAPING:
+
+```{r,message=FALSE,warning=F}
+library(readr) # carregar a biblioteca 'readr'
+info_basicas <- read_delim("info_basicas.txt", 
+                           "\t", escape_double = FALSE, trim_ws = TRUE)
+
+info_reclamacoes_avaliadas <- read_delim("info_reclamacoes_avaliadas.txt", 
+                                         "\t", escape_double = FALSE, trim_ws = TRUE)
+```
+
+
+### 2 - BREVE LIMPEZA DOS CONJUNTOS DE DADOS
+
+Removendo valores duplicados:
+
+```{r,message=FALSE,warning=F}
+info_reclamacoes_avaliadas<-unique(info_reclamacoes_avaliadas)
+```
+
+Estrutura dos conjuntos de dados:
+
+```{r,message=FALSE,warning=F}
+
+str(info_basicas)
+str(info_reclamacoes_avaliadas)
+```
+
+
+Acima podemos ver que algumas variáveis numéricas estão como ```character```. Isso aconteceu porque estão com o símbolo de %.
+
+A função ```gsub``` localiza um texto padrão e o substitui pelo texto definido.
+
+Iremos substituir qualquer sinal de % por vazio.
+
+```{r,message=FALSE,warning=F}
+info_basicas$indice_solucao <- gsub("[\\%,]", "", info_basicas$indice_solucao)
+
+info_basicas$percent_voltariam <- gsub("[\\%,]", "",info_basicas$percent_voltariam)
+```
+
+Agora podemos transformar a variável da classe texto em numérica.
+
+```{r,message=FALSE,warning=F}
+info_basicas$indice_solucao<- as.numeric(info_basicas$indice_solucao)
+info_basicas$percent_voltariam<- as.numeric(info_basicas$percent_voltariam)
+```
+
+Estrutura dos dados ```info_reclamacoes_avaliadas```:
+
+```{r,message=FALSE,warning=F}
+str(info_reclamacoes_avaliadas)
+head(info_reclamacoes_avaliadas)
+```
+
+
+Precisamos transformar a variável ‘tempo_reclamacao’ para numérica.
+
+Dificuldade: temos respostas em minutos, horas, dias e meses.
+
+Solução: criei uma função ```ifelse```.
+
+Iremos avaliar se cada linha do conjunto tem o texto ‘horas’ ou ‘hora’ para a variável ‘tempo_reclamacao’.
+
+Caso seja verdadeiro, iremos extrair apenas os números e multiplicar por 60. Assim deixaremos todos os valores em **minutos**.
+
+Caso seja falso, ou seja, iremos verificar se o tempo está em minutos e, em caso positivo, apenas extraímos os valores (que já estarão na medida que desejamos).
+
+Caso seja falso novamente, iremos verificar se o tempo está em “mês” ou “meses”. Se sim, iremos multiplicar o número por 30x24x60, transformando assim para minutos.
+
+E, caso nenhum teste acima seja VERDADEIRO, só resta a opção do tempo estar em “dia” ou “dias”. Neste caso iremos multiplicar o valor numérico por 60*24 para transformá-lo em minutos.
+
+**O resultado foi armazenado em uma nova coluna, chamada ‘minutos’.**
+
+```{r,message=FALSE,warning=F}
+info_reclamacoes_avaliadas$minutos<-
+  ifelse(
+    grepl(pattern = paste(c("horas","hora"),collapse = "|"), x = info_reclamacoes_avaliadas$tempo_reclamacao),
+    #se o valor tiver em horas (ou hora) irá transformar para minutos.
+    #busca apenas os números da coluna 'tempo_reclamacao' e multiplica por 60.
+    parse_number(info_reclamacoes_avaliadas$tempo_reclamacao)*60, 
+    ##### VERIFICAR SE ESTÁ EM MESES, DIA OU MINUTOS
+    ifelse(
+      grepl(pattern = paste(c("minuto","minutos"),collapse = "|"), x = info_reclamacoes_avaliadas$tempo_reclamacao),
+      #busca apenas os números da coluna 'tempo_reclamacao'
+      parse_number(info_reclamacoes_avaliadas$tempo_reclamacao),
+      ifelse(
+        grepl(pattern = paste(c("mês","meses"),collapse = "|"), x = info_reclamacoes_avaliadas$tempo_reclamacao),
+        #se o valor tiver em meses (ou mês) irá transformar para minutos.
+        #busca apenas os números da coluna 'tempo_reclamacao' e multiplica por 60*24*30.
+        parse_number(info_reclamacoes_avaliadas$tempo_reclamacao)*24*60*30,
+        #se o valor tiver em dias (ou dia) irá transformar para minutos.
+        #busca apenas os números da coluna 'tempo_reclamacao' e multiplica por 60*24.
+        parse_number(info_reclamacoes_avaliadas$tempo_reclamacao)*24*60
+      )
+    )
+  )
+```
+
+
+Texto ocultado pelo Reclame Aqui:
+
+Algumas reclamações tem o texto “[Editado pelo Reclame Aqui]” quando o texto original viola as regras do site e precisa ser ocultado.
+
+Iremos substituir todo esse texto por “editado_RA”. Assim essa parte do texto não irá nos atrapalhar em nossa análise.
+
+
+```{r,message=FALSE,warning=F}
+info_reclamacoes_avaliadas$titulo_reclamacao<-
+  gsub('Editado pelo Reclame Aqui','editado_RA',info_reclamacoes_avaliadas$titulo_reclamacao)
+```
+
+
+Cabeçalho dos conjuntos de dados após limpeza e manipulação:
+
+```{r,message=FALSE,warning=F}
+head(info_basicas)
+head(info_reclamacoes_avaliadas)
+```
+
+
+### 3 - COMPARAÇÃO GRÁFICA ENTRE AS DAS EMPRESAS
+
+Carregar bibliotecas:
+
+```{r,message=FALSE,warning=F}
+library(plyr)
+library(dplyr)
+library(magrittr)
+library(ggplot2)
+```
+
+
+Gráficos comparativos usando a biblioteca ```ggplot2```
+
+Definindo o tema do gráfico - irá tirar o fundo cinza tradicional dos gráficos ggplot:
+
+```{r,message=FALSE,warning=F}
+theme_set(theme_classic())
+```
+
+
+Comparando as empresas para o quesito: **Índice de Solução (%)**:
+
+Os gráficos da biblioteca ```ggplot``` são compostos por 3 itens:
+
+1 - O conjunto de dados
+
+2 - Um sistema de coordenadas
+
+3 - As marcas de representação visual (linhas, colunas, pontos, etc)
+
+```{r,message=FALSE,warning=F}
+# conjunto de dados + sistema de coordenadas
+ggplot(info_basicas, aes(empresa, indice_solucao)) +
+# Marcas de representação visual = colunas  
+geom_col(width = 0.5,size = 1, color="darkblue", fill = "white") + 
+  #Título do Gráfico
+  labs(title="Índice de Solução por Empresa") +
+  #Inclinar valores do eixo x (empresas)
+  theme(axis.text.x = element_text(angle=65, vjust=0.6),
+        #Centralizar o título
+        plot.title = element_text(hjust = 0.5),
+        #Tirar o título do eixo x
+        axis.title.x=element_blank(),
+        # Tirar o título do eixo y
+        axis.title.y=element_blank())+
+  # Definir que o eixo y começa no 0 e termina no 100
+  ylim(limits = c(0,100))
+```
+
+Comparando as empresas para o quesito: **% de reclamações não respondidas**
+
+Cálculo do percentual de reclamações não respondidas:
+
+```{r,message=FALSE,warning=F}
+info_basicas$per_nao_respondidas<- round(info_basicas$nao_respondidas/info_basicas$qnt_reclamacoes,3)*100
+```
+
+Construção do gráfico:
+
+```{r,message=FALSE,warning=F}
+# conjunto de dados + sistema de coordenadas
+ggplot(info_basicas, aes(empresa, per_nao_respondidas)) + # Marcas de representação visual = barras  
+geom_bar(stat="identity", width = 0.5, fill="tomato2") + 
+  # Título do gráfico
+  labs(title="% de reclamações não respondidas vs Nota") +
+  # Inclinar valores do eixo x (empresas)
+  theme(axis.text.x = element_text(angle=65, vjust=0.6),
+        # Centralizar o título
+        plot.title = element_text(hjust = 0.5),
+        #Tirar o título do eixo x
+        axis.title.x=element_blank(),
+        #Tirar o título do eixo y
+        axis.title.y=element_blank())+
+  # Adicionando a nota
+  geom_line(aes(x = empresa, y = nota), size = 1.5, color="red", group = 1)
+```
+
+Comparando as empresas para o quesito: **Quantidade de reclamações avaliadas**:
+
+```{r,message=FALSE,warning=F}
+# conjunto de dados + sistema de coordenadas
+ggplot(info_basicas, aes(empresa, avaliadas)) +
+# Marcas de representação visual = barras  
+  geom_bar(stat="identity", width = 0.5, fill="tomato2") + 
+  # Título do gráfico
+  labs(title="Quantidade de reclamações avaliadas") +
+  # Inclinar valores do eixo x (empresas)
+  theme(axis.text.x = element_text(angle=65, vjust=0.6),
+        # Centralizar o título
+        plot.title = element_text(hjust = 0.5),
+        #Tirar o título do eixo x
+        axis.title.x=element_blank(),
+        #Tirar o título do eixo y
+        axis.title.y=element_blank())+
+  # Definir que o eixo y começa no 0 e termina no 35000
+  ylim(limits = c(0,35000))
+```
+
+Comparando as empresas para o quesito: **Nota do Consumidor**
+
+```{r,message=FALSE,warning=F}
+# conjunto de dados + sistema de coordenadas
+ggplot(info_basicas, aes(empresa, nota_consumidor)) +
+# Marcas de representação visual = barras  
+geom_bar(stat="identity", width = 0.5, fill="tomato2") + 
+  # Título do gráfico
+  labs(title="Nota do Consumidor") +
+  # Inclinar valores do eixo x (empresas)
+  theme(axis.text.x = element_text(angle=65, vjust=0.6),
+        # Centralizar o título
+        plot.title = element_text(hjust = 0.5),
+        #Tirar o título do eixo x
+        axis.title.x=element_blank(),
+        #Tirar o título do eixo y
+        axis.title.y=element_blank())+
+  # Definir que o eixo y começa no 0 e termina no 10
+  ylim(limits = c(0,10))
+```
+
+Análise de há quanto tempo foram feitas as últimas reclamações:
+
+```{r,message=FALSE,warning=F}
+# eixo x = empresa
+# eixo y = minutos
+# colorir pela variável 'status_reclamacao'
+ggplot(info_reclamacoes_avaliadas, aes(x=empresa, y=minutos, fill=status_reclamacao)) + 
+  # Representação visual = boxplot 
+  geom_boxplot() +
+  # Inclinar valores do eixo x (empresas)
+  theme(axis.text.x = element_text(angle=65, vjust=0.6))
+```
+
+### 4 - MINERAÇÃO DE TEXTO - ANÁLISE DAS RECLAMAÇÕES
+
+Bibliotecas que iremos utilizar:
+```{r,message=FALSE,warning=F}
+library(tm)
+library(wordcloud2)
+library(tidytext)
+```
+
+Vamos separar todas as palavras que estão no título da reclamação. Então, para saber a qual título elas pertencem, vamos criar um id para cada título das reclamações:
+
+```{r,message=FALSE,warning=F}
+info_reclamacoes_avaliadas %<>% mutate(reclamacao_id = row_number())
+```
+
+Criar uma linha para cada palavra do título:
+
+```{r,message=FALSE,warning=F}
+avaliadas_token<-info_reclamacoes_avaliadas %>% 
+  select(titulo_reclamacao,reclamacao_id) %>% 
+  unnest_tokens(word,titulo_reclamacao) 
+```
+
+Stopwords são palavras neutras, que não nos ajudam em nada para analisar a reclamação do consumidor. São por exemplo as preposições.
+
+A função ```stopwords``` nos retorna vários exemplos de stopwords.
+
+Remover stopwords:
+
+```{r,message=FALSE,warning=F}
+stop_words_pt<-data.frame(word=(stopwords(kind = "pt")))
+avaliadas_token <- avaliadas_token %>% 
+  anti_join(stop_words_pt)
+```
+
+Remover palavras com duas letras, pois provavelmente também serão palavras inúteis:
+
+```{r,message=FALSE,warning=F}
+avaliadas_token %<>% 
+  filter(sapply(avaliadas_token$word,nchar)>2)
+```
+
+
+#### HÁ RELAÇÃO ENTRE AS PALAVRAS DO TÍTULO E A SOLUÇÃO DA RECLAMAÇÃO?
+
+O que queremos saber aqui é se a chance da empresa solucionar o problema está relacionada às palavras escritas no título da reclamação.
+
+
+```{r,message=FALSE,warning=F}
+#juntar o status da reclamação no conjunto de dados com as palavras
+
+avaliadas_token <-join(avaliadas_token,
+info_reclamacoes_avaliadas[,c("reclamacao_id","status_reclamacao")])
+
+analise_palavras<-avaliadas_token %>%
+  group_by(word) %>%
+  mutate(percentual_solucao = sum(status_reclamacao=="Resolvido")/n(),
+         qnt_palavra = n()) %>%
+  select(word,percentual_solucao,qnt_palavra) %>%
+  unique()%>%
+  ungroup()
+
+#filtrar apenas os resultados com frequencia maior que 50
+analise_palavras %<>% filter(qnt_palavra >50)
+```
+
+E se a gente separar por empresa?
+
+```{r,message=FALSE,warning=F}
+avaliadas_token_empresa <- join(avaliadas_token,
+info_reclamacoes_avaliadas[,c("reclamacao_id","empresa")])
+```
+
+Percentual geral de solução por empresa sem considerar as palavras do título
+
+```{r,message=FALSE,warning=F}
+analise_empresas <-avaliadas_token_empresa %>%
+  group_by(empresa) %>%
+  mutate(percentual_solucao = sum(status_reclamacao=="Resolvido")/n()) %>%
+  select(percentual_solucao,empresa) %>%
+  unique() %>%
+  ungroup()
+```
+
+Percentual geral de solução por empresa por palavras no título
+
+```{r,message=FALSE,warning=F}
+analise_palavras_empresas <-avaliadas_token_empresa %>%
+  group_by(word,empresa) %>%
+  mutate(percentual_solucao = sum(status_reclamacao=="Resolvido")/n(),
+         qnt_palavra = n()) %>%
+  select(word,percentual_solucao,qnt_palavra,empresa) %>%
+  unique()%>%
+  ungroup()
+analise_palavras_empresas %<>% filter(qnt_palavra >50)
+```
+
+
+#### CORRELAÇÃO ENTRE PALAVRAS:
+
+QUAIS AS PALAVRAS QUE MAIS APARECERAM JUNTAS?
+
+```{r,message=FALSE,warning=F}
+library(widyr)
+library(igraph)
+library(ggraph)
+```
+
+
+```{r,message=FALSE,warning=F}
+correlacao <- avaliadas_token %>%
+  group_by(word) %>% 
+  filter(n() > 20) %>%
+  pairwise_cor(word, reclamacao_id, sort = TRUE,upper=F)%>%
+  ungroup()
+correlacao %<>% filter(correlation >0.3)
+correlacao %>%
+  arrange(-correlation) %>%
+  top_n(10) %>% #Filtrar as 10 maiores
+  graph_from_data_frame() %>%
+  ggraph(layout = 'fr') + 
+  guides(edge_alpha = "none", edge_width = "none") +
+  scale_edge_colour_gradientn(limits = c(-1, 1), colors = c("firebrick2", "dodgerblue2")) +
+  geom_edge_link(aes(edge_alpha = correlation), show.legend = FALSE) + 
+  geom_node_point(color = 'lightblue', size = 5) + 
+  geom_node_text(aes(label = name), repel = TRUE) + 
+  theme_graph() +
+  labs(title = "Palavras que geralmente apareceram juntas")
+```
+
+#### Palavras que mais aparecem:
+
+```{r,message=FALSE,warning=F}
+dados_grafico<- avaliadas_token %>% count(word, sort = T) %>% top_n(5) %>%
+  mutate(word = reorder(word,n))
+
+  ggplot(dados_grafico,aes(x = word, y=n)) + 
+  geom_col() +
+  xlab(NULL) +
+  coord_flip() +
+  theme_classic() +
+  labs(x = "",
+       y = "Qnt. aparições",
+       title = paste0("Palavras que aparecem nas reclamações"))
+```
+
+#### NUVEM DE PALAVRAS
+
+Esse é o gráfico 'wordcloud'
+
+```{r,message=FALSE,warning=F}
+library(wordcloud2)
+  wordcloud_dados <- analise_palavras %>% 
+    select(word,qnt_palavra) %>%
+    rename(freq = qnt_palavra)
+  
+  wordcloud2(data = wordcloud_dados)
+```
+
+### 5 Repositório no Github
+
+Todos os arquivos utilizados na Websérie Reclame Aqui com Ciência de Dados + Conjuntos de dados ficarão disponíveis no Github.
+
+[Para acessar, clique aqui.](https://github.com/luisotavio88/webserie_reclameaqui){target="_blank"}
+
+
+## No dia 12/04 (próxima segunda-feira) às 20 horas teremos o Episódio #3 da Websérie Reclame Aqui com Ciência de Dados.
