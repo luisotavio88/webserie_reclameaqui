@@ -527,8 +527,10 @@ library(RSelenium)</code></pre>
 <p>Links que vamos acessar para buscar as informações básicas:</p>
 <pre class="r"><code>link_lojas&lt;-c(&quot;https://www.reclameaqui.com.br/empresa/americanas-com-loja-online/&quot;,
               &quot;https://www.reclameaqui.com.br/empresa/casas-bahia-loja-online/&quot;,
-              &quot;https://www.reclameaqui.com.br/empresa/ponto-frio-loja-online/&quot;)</code></pre>
-<p>O código abaixo irá acessar cada um dos 3 links acima e buscar as informações solicitadas de cada empresa.</p>
+              &quot;https://www.reclameaqui.com.br/empresa/ponto-frio-loja-online/&quot;,
+              &quot;https://www.reclameaqui.com.br/empresa/magazine-luiza-loja-online/&quot;,
+              &quot;https://www.reclameaqui.com.br/empresa/carrefour-loja-online/&quot;)</code></pre>
+<p>O código abaixo irá acessar cada um dos 5 links acima e buscar as informações solicitadas de cada empresa.</p>
 <pre class="r"><code>for(link_loja in link_lojas){ # O objeto link_loja irá assumir os valores do objeto link_lojas (cada vez irá assumir 1 deles)
   
   remDr$navigate(link_loja) #Acessar o link
@@ -594,19 +596,21 @@ library(RSelenium)</code></pre>
 <p>FIM DAS INFORMAÇÕES BÁSICAS</p>
 <div id="começo-da-busca-por-reclamações-de-cada-empresa" class="section level4">
 <h4>COMEÇO DA BUSCA POR RECLAMAÇÕES DE CADA EMPRESA</h4>
-<p>Adicionar ‘lista-reclamacoes’ na url para buscar as reclamações:</p>
+<p>Adicionar ‘lista-reclamacoes’ na url para buscar as reclamações já avaliadas:</p>
 <pre class="r"><code>link_reclamacoes&lt;-paste0(link_lojas,&quot;lista-reclamacoes/&quot;)</code></pre>
 <p>Criar o data frame para armazenar todas as reclamações:</p>
-<pre class="r"><code>info_reclamacoes &lt;-data.frame()</code></pre>
+<pre class="r"><code>info_reclamacoes_avaliadas &lt;-data.frame()</code></pre>
 <p>O código abaixo irá acessar cada uma das lojas e buscar todas as páginas definidas no looping.</p>
 <pre class="r"><code># looping para mudar a loja
 for(link_pagina in link_reclamacoes){
   
   #looping para mudar a página
   for(pagina in 1:5){
-    
+    teste_logico &lt;-FALSE
+    while(teste_logico == FALSE){
+ 
     #entrar na página de reclamações definida pelo objeto &#39;pagina&#39;.
-    remDr$navigate(paste0(link_pagina,&quot;?pagina=&quot;,pagina))
+    remDr$navigate(paste0(link_pagina,&quot;?pagina=&quot;,pagina,&quot;&amp;status=EVALUATED&quot;))
     
     #ler todo o código da página acessada
     codigo_reclamacoes&lt;- read_html(remDr$getPageSource()[[1]])
@@ -636,10 +640,16 @@ for(link_pagina in link_reclamacoes){
       html_nodes(&quot;.hourAgo&quot;) %&gt;%
       html_text()
     
+    #teste lógico para o looping não parar quando der algum bug
+    teste_logico &lt;- length(empresa)&gt;0 &amp; length(titulo_reclamacao)&gt;0 &amp;
+        length(status_reclamacao)&gt;0 &amp; length(local_reclamacao)&gt;0 &amp;
+        length(tempo_reclamacao)&gt;0
+    }
+    
     #juntar as informações obtidas
     info_pagina&lt;-data.frame(empresa,titulo_reclamacao,status_reclamacao,local_reclamacao,tempo_reclamacao)
     
-    info_reclamacoes&lt;-rbind(info_pagina,info_reclamacoes)
+    info_reclamacoes_avaliadas&lt;-rbind(info_pagina,info_reclamacoes_avaliadas)
   }
 }</code></pre>
 <p>FIM DA BUSCA POR RECLAMAÇÕES</p>
@@ -647,6 +657,10 @@ for(link_pagina in link_reclamacoes){
 <pre class="r"><code>remDr$close() #Fechar o navegador que abrimos
 rD$server$stop() #Parar o servidor
 rm(rD) #remover o objeto rD</code></pre>
+<p>Salvar os dados obtidos:</p>
+<pre class="r"><code>write.table(info_basicas,&quot;info_basicas_bruto.txt&quot;,sep = &quot;\t&quot;,fileEncoding = &quot;utf8&quot;,row.names = F)
+
+write.table(info_reclamacoes_avaliadas,&quot;info_reclamacoes_bruto.txt&quot;,sep = &quot;\t&quot;,fileEncoding = &quot;utf8&quot;,row.names = F)</code></pre>
 </div>
 </div>
 </div>
@@ -681,13 +695,9 @@ rm(rD) #remover o objeto rD</code></pre>
 <p>A função <code>gsub</code> localiza um texto padrão e o substitui pelo texto definido.</p>
 <p>Iremos substituir qualquer sinal de % por vazio.</p>
 <pre class="r"><code>info_basicas$indice_solucao &lt;- gsub(&quot;[\\%,]&quot;, &quot;&quot;, info_basicas$indice_solucao)
-
 info_basicas$percent_voltariam &lt;- gsub(&quot;[\\%,]&quot;, &quot;&quot;, info_basicas$percent_voltariam)
-
 #agora podemos transformar a variável da classe texto em numérica.
-
 info_basicas$indice_solucao&lt;- as.numeric(info_basicas$indice_solucao)
-
 info_basicas$percent_voltariam&lt;- as.numeric(info_basicas$percent_voltariam)</code></pre>
 <p>Cabeçalho do cojunto de dados info_basicas</p>
 <pre class="r"><code>knitr::kable(head(info_basicas))</code></pre>
@@ -752,8 +762,8 @@ info_basicas$percent_voltariam&lt;- as.numeric(info_basicas$percent_voltariam)</
 </tr>
 </tbody>
 </table>
-<p>Estrutura geral do conjunto de dados <code>info_reclamacoes</code>:</p>
-<pre class="r"><code>str(info_reclamacoes)</code></pre>
+<p>Estrutura geral do conjunto de dados <code>info_reclamacoes_avaliadas</code>:</p>
+<pre class="r"><code>str(info_reclamacoes_avaliadas)</code></pre>
 <pre><code>## tibble [150 x 5] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ empresa          : chr [1:150] &quot;Ponto Frio - Loja Online&quot; &quot;Ponto Frio - Loja Online&quot; &quot;Ponto Frio - Loja Online&quot; &quot;Ponto Frio - Loja Online&quot; ...
 ##  $ titulo_reclamacao: chr [1:150] &quot;PONTOS DO PONTO FRIO NÃO CREDITADOS&quot; &quot;PONTOS NAO CREDITADOS&quot; &quot;Não entregam a minha televisão&quot; &quot;Atendimento DEPLORAVEL e prazos insustentáveis&quot; ...
@@ -768,7 +778,7 @@ info_basicas$percent_voltariam&lt;- as.numeric(info_basicas$percent_voltariam)</
 ##   ..   local_reclamacao = col_character(),
 ##   ..   tempo_reclamacao = col_character()
 ##   .. )</code></pre>
-<pre class="r"><code>knitr::kable(head(info_reclamacoes))</code></pre>
+<pre class="r"><code>knitr::kable(head(info_reclamacoes_avaliadas))</code></pre>
 <table style="width:100%;">
 <colgroup>
 <col width="20%"></col>
@@ -838,14 +848,14 @@ info_basicas$percent_voltariam&lt;- as.numeric(info_basicas$percent_voltariam)</
 <p>Caso seja verdadeiro, iremos extrair apenas os números e multiplicar por 60. Assim deixaremos todos os valores em <strong>minutos</strong>.</p>
 <p>Caso seja falso, ou seja, o tempo esteja medido em minutos, iremos apenas extrair os números e eliminar o texto.</p>
 <p>O resultado foi armazenado em uma nova coluna, chamada ‘minutos’.</p>
-<pre class="r"><code>info_reclamacoes$minutos&lt;-
-  ifelse(grepl(pattern = paste(c(&quot;horas&quot;,&quot;hora&quot;),collapse = &quot;|&quot;), x = info_reclamacoes$tempo_reclamacao),#se o valor tiver em horas (ou hora) irá considerar verdadeiro.
-         parse_number(info_reclamacoes$tempo_reclamacao)*60, #busca apenas os números da coluna &#39;tempo_reclamacao&#39; e multiplica por 60.
-       parse_number(info_reclamacoes$tempo_reclamacao)#busca apenas os números da coluna &#39;tempo_reclamacao&#39;
+<pre class="r"><code>info_reclamacoes_avaliadas$minutos&lt;-
+  ifelse(grepl(pattern = paste(c(&quot;horas&quot;,&quot;hora&quot;),collapse = &quot;|&quot;), x = info_reclamacoes_avaliadas$tempo_reclamacao),#se o valor tiver em horas (ou hora) irá considerar verdadeiro.
+         parse_number(info_reclamacoes_avaliadas$tempo_reclamacao)*60, #busca apenas os números da coluna &#39;tempo_reclamacao&#39; e multiplica por 60.
+       parse_number(info_reclamacoes_avaliadas$tempo_reclamacao)#busca apenas os números da coluna &#39;tempo_reclamacao&#39;
        )</code></pre>
-<p>Cabeçalho do conjunto <code>info_reclamacoes</code> após limpeza dos dados:</p>
-<pre class="r"><code>#info_reclamacoes
-knitr::kable(head(info_reclamacoes))</code></pre>
+<p>Cabeçalho do conjunto <code>info_reclamacoes_avaliadas</code> após limpeza dos dados:</p>
+<pre class="r"><code>#info_reclamacoes_avaliadas
+knitr::kable(head(info_reclamacoes_avaliadas))</code></pre>
 <table>
 <colgroup>
 <col width="18%"></col>
@@ -919,8 +929,8 @@ knitr::kable(head(info_reclamacoes))</code></pre>
 <p>Salvar os conjuntos de dados no meu computador</p>
 <p>Salvar o conjunto <code>info_basicas</code></p>
 <pre class="r"><code>write.table(info_basicas,&quot;info_basicas.txt&quot;,sep = &quot;\t&quot;,fileEncoding = &quot;utf8&quot;,row.names = F)</code></pre>
-<p>Salvar o conjunto <code>info_reclamacoes</code></p>
-<pre class="r"><code>write.table(info_reclamacoes,&quot;info_reclamacoes.txt&quot;,sep = &quot;\t&quot;,fileEncoding = &quot;utf8&quot;,row.names = F)</code></pre>
+<p>Salvar o conjunto <code>info_reclamacoes_avaliadas</code></p>
+<pre class="r"><code>write.table(info_reclamacoes_avaliadas,&quot;info_reclamacoes_avaliadas.txt&quot;,sep = &quot;\t&quot;,fileEncoding = &quot;utf8&quot;,row.names = F)</code></pre>
 </div>
 <div id="repositório-no-github" class="section level2">
 <h2>7 Repositório no Github</h2>

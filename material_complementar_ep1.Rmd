@@ -1,5 +1,5 @@
 ---
-title: "Websérie Reclame aqui com Ciência de Dados | Episódio #1"
+title: "WebsÃ©rie Reclame aqui com CiÃªncia de Dados | EpisÃ³dio #1"
 author: "luisotavio.pro"
 date: "29/03/2021"
 output:
@@ -11,82 +11,82 @@ output:
 
 # Como buscar os dados do site Reclame Aqui com R
 
-#### Esse é um material complementar, ou seja, não substitui você assistir ao Episódio #1.
+#### Esse Ã© um material complementar, ou seja, nÃ£o substitui vocÃª assistir ao EpisÃ³dio #1.
 
-[**Clique aqui para assistir o Episódio 1 da Websérie**](https://www.youtube.com/watch?v=ffKQPctKkVc){target="_blank"}
+[**Clique aqui para assistir o EpisÃ³dio 1 da WebsÃ©rie**](https://www.youtube.com/watch?v=ffKQPctKkVc){target="_blank"}
 
 
-### OBJETIVO DA WEBSÉRIE:
+### OBJETIVO DA WEBSÃ‰RIE:
 
-TE PREPARAR PARA CONSTRUIR UM PROJETO COMPLETO DE CIÊNCIA DE DADOS
+TE PREPARAR PARA CONSTRUIR UM PROJETO COMPLETO DE CIÃŠNCIA DE DADOS
 
 - OBTER OS DADOS
 - ORGANIZAR/LIMPAR OS DADOS
 - EXPLORAR OS DADOS
 - ANALISAR OS DADOS
-- CRIAR MODELOS OU ANÁLISES NECESSÁRIAS
+- CRIAR MODELOS OU ANÃLISES NECESSÃRIAS
 - APRESENTAR OS RESULTADOS DE FORMA SIMPLES, CLARA E RICA.
 
 
-### OBJETIVO DO EPISÓDIO #1
+### OBJETIVO DO EPISÃ“DIO #1
 
 - OBTER OS DADOS DE E-COMMERCE DO SITE RECLAME AQUI
-- CONSTRUIR UM CONJUNTO DE DADOS LIMPO E DEIXÁ-LO PRONTO PARA A EXPLORAÇÃO DE DADOS
+- CONSTRUIR UM CONJUNTO DE DADOS LIMPO E DEIXÃ-LO PRONTO PARA A EXPLORAÃ‡ÃƒO DE DADOS
 
 
 
-### ROTEIRO DO EPISÓDIO #1
+### ROTEIRO DO EPISÃ“DIO #1
 
-1 - o que é webscraping e como fazer na linguagem R?
+1 - o que Ã© webscraping e como fazer na linguagem R?
 
-2 - instalar os programas necessários
+2 - instalar os programas necessÃ¡rios
 
-3 - configurações necessárias
+3 - configuraÃ§Ãµes necessÃ¡rias
 
 4 - entrar no site do Reclame Aqui e buscar o que nos interessa
 
 5 - organizar tudo em conjuntos de dados
 
-6 - fazer a limpeza dos dados, caso seja necessário
+6 - fazer a limpeza dos dados, caso seja necessÃ¡rio
 
-7 - Repositório no Github
-
-
+7 - RepositÃ³rio no Github
 
 
-## 1 - o que é webscraping e como fazer na linguagem R?
 
-Webscraping é você extrair dados de sites da Internet usando programação.
+
+## 1 - o que Ã© webscraping e como fazer na linguagem R?
+
+Webscraping Ã© vocÃª extrair dados de sites da Internet usando programaÃ§Ã£o.
 
 Como fazer na linguagem R?
 
 Bibliotecas - ```rvest``` ou ```RSelenium```
 
-#### Páginas estáticas
+#### PÃ¡ginas estÃ¡ticas
 
-Todos os dados são carregados quando lemos o código html.
+Todos os dados sÃ£o carregados quando lemos o cÃ³digo html.
 
 Exemplo: [https://www.tripadvisor.com/Restaurants-g303576-Florianopolis_State_of_Santa_Catarina.html](https://www.tripadvisor.com/Restaurants-g303576-Florianopolis_State_of_Santa_Catarina.html){target="_blank"}
 
 - Podemos usar apenas a biblioteca ```rvest``` para extrair os dados.
 
-#### Páginas dinâmicas 
+#### PÃ¡ginas dinÃ¢micas 
 
 Dados carregados via JavaScript.
 
 Exemplo: [https://www.reclameaqui.com.br/empresa/americanas-com-loja-online/](https://www.reclameaqui.com.br/empresa/americanas-com-loja-online/){target="_blank"}
 
-- Além da biblioteca ```rvest```, precisamos usar a biblioteca ```RSelenium```.
+- AlÃ©m da biblioteca ```rvest```, precisamos usar a biblioteca ```RSelenium```.
 
-**Para ver a diferença entre os códigos fonte dos exemplos acima, faça o seguinte:**
+**Para ver a diferenÃ§a entre os cÃ³digos fonte dos exemplos acima, faÃ§a o seguinte:**
 
-- Acesse os endereços mencionados
+- Acesse os endereÃ§os mencionados
 
-- Clique com o botão direito na página
+- Clique com o botÃ£o direito na pÃ¡gina
 
-- Clique em 'exibir código fonte da página'
+- Clique em 'exibir cÃ³digo fonte da pÃ¡gina'
 
-### 2 - instalar os programas necessários
+### 2 - instalar os programas necessÃ¡rios
 
 - Biblioteca rvest
 
@@ -102,27 +102,27 @@ install.packages("RSelenium")
 
 - Selenium web drivers
 
-Passo 1 - Veja a versão do seu navegador Chrome:
+Passo 1 - Veja a versÃ£o do seu navegador Chrome:
 
   - Abra o navegador Chrome
-  - A direita da barra de endereços, clique nos 3 pontinhos -> Clique em Ajuda -> Sobre o Google Chrome
-  - Verifique a versão do Navegador Google Chrome 
+  - A direita da barra de endereÃ§os, clique nos 3 pontinhos -> Clique em Ajuda -> Sobre o Google Chrome
+  - Verifique a versÃ£o do Navegador Google Chrome 
 
-Passo 2 - Faça o Download do WebDriver
+Passo 2 - FaÃ§a o Download do WebDriver
 
   - Abra o link: [https://chromedriver.chromium.org/downloads](https://chromedriver.chromium.org/downloads){target="_blank"}
-  - Faça o download da versão correspondente ao seu navegador (encontrada no passo anterior).
+  - FaÃ§a o download da versÃ£o correspondente ao seu navegador (encontrada no passo anterior).
 
-- Extensão do Chrome para facilitar a vida:
+- ExtensÃ£o do Chrome para facilitar a vida:
 
 [https://chrome.google.com/webstore/detail/selectorgadget/mhjhnkcfbdhnjickkkdbjoemdmbfginb?hl=pt-BR](https://chrome.google.com/webstore/detail/selectorgadget/mhjhnkcfbdhnjickkkdbjoemdmbfginb?hl=pt-BR){target="_blank"}
 
-Você irá usar a extensão Selector Gadget para encontrar as tags correspondente aos dados que precisa capturar.
+VocÃª irÃ¡ usar a extensÃ£o Selector Gadget para encontrar as tags correspondente aos dados que precisa capturar.
 
 
-### 3 - Configurações Necessárias
+### 3 - ConfiguraÃ§Ãµes NecessÃ¡rias
 
-Carregar as bibliotecas que serão úteis:
+Carregar as bibliotecas que serÃ£o Ãºteis:
 
 ```{r,eval=FALSE}
 library(plyr)
@@ -133,7 +133,7 @@ library(RSelenium)
 
 Iniciar o Servidor Selenium e o Navegador Chrome
 
-Especifique no argumento "chromever" a mesma versão do webdriver que você fez Download.
+Especifique no argumento "chromever" a mesma versÃ£o do webdriver que vocÃª fez Download.
 
 ```{r,eval=F}
 rD <- rsDriver(browser="chrome", port=4545L, chromever = "89.0.4389.23")
@@ -145,29 +145,31 @@ Assuma o controle do navegador com o objeto ```remDr```.
 remDr <- rD[["client"]] #NAVEGADOR
 ```
 
-### 4 - Buscar os dados das páginas iniciais das empresas (informações básicas)
+### 4 - Buscar os dados das pÃ¡ginas iniciais das empresas (informaÃ§Ãµes bÃ¡sicas)
 
 ```{r,eval=F}
-info_basicas<-data.frame() #Criei um data frame para guardar as informações básicas das empresas
+info_basicas<-data.frame() #Criei um data frame para guardar as informaÃ§Ãµes bÃ¡sicas das empresas
 ```
 
-Links que vamos acessar para buscar as informações básicas:
+Links que vamos acessar para buscar as informaÃ§Ãµes bÃ¡sicas:
 
 ```{r,eval=F}
 link_lojas<-c("https://www.reclameaqui.com.br/empresa/americanas-com-loja-online/",
               "https://www.reclameaqui.com.br/empresa/casas-bahia-loja-online/",
-              "https://www.reclameaqui.com.br/empresa/ponto-frio-loja-online/")
+              "https://www.reclameaqui.com.br/empresa/ponto-frio-loja-online/",
+              "https://www.reclameaqui.com.br/empresa/magazine-luiza-loja-online/",
+              "https://www.reclameaqui.com.br/empresa/carrefour-loja-online/")
 ```
 
-O código abaixo irá acessar cada um dos 3 links acima e buscar as informações solicitadas de cada empresa.
+O cÃ³digo abaixo irÃ¡ acessar cada um dos 5 links acima e buscar as informaÃ§Ãµes solicitadas de cada empresa.
 
 ```{r,eval=F}
-for(link_loja in link_lojas){ # O objeto link_loja irá assumir os valores do objeto link_lojas (cada vez irá assumir 1 deles)
+for(link_loja in link_lojas){ # O objeto link_loja irÃ¡ assumir os valores do objeto link_lojas (cada vez irÃ¡ assumir 1 deles)
   
   remDr$navigate(link_loja) #Acessar o link
   
   
-  #ler todo o código da página aberta
+  #ler todo o cÃ³digo da pÃ¡gina aberta
   codigo<- read_html(remDr$getPageSource()[[1]])
   
   # Busca o nome da empresa
@@ -180,22 +182,22 @@ for(link_loja in link_lojas){ # O objeto link_loja irá assumir os valores do obj
     html_nodes(".score b") %>%
     html_text()
   
-  # Busca a quantidade de reclamações recebidas pela empresa
+  # Busca a quantidade de reclamaÃ§Ãµes recebidas pela empresa
   qnt_reclamacoes <- codigo %>% 
     html_nodes("a:nth-child(1) .stats") %>%
     html_text()
   
-  # Busca o % de reclamações respondidas pela empresa
+  # Busca o % de reclamaÃ§Ãµes respondidas pela empresa
   percent_resp <- codigo %>% 
     html_nodes(".jFIGdy:nth-child(2) span") %>%
     html_text()
   
-  # Busca o % de clientes que voltariam a fazer negócio com a empresa
+  # Busca o % de clientes que voltariam a fazer negÃ³cio com a empresa
   percent_voltariam <- codigo %>% 
     html_nodes(".jFIGdy:nth-child(4) span") %>%
     html_text()
   
-  # Busca o índice de reclamações solucionadas pela empresa
+  # Busca o Ã­ndice de reclamaÃ§Ãµes solucionadas pela empresa
   indice_solucao <- codigo %>% 
     html_nodes(".jFIGdy:nth-child(6) span") %>%
     html_text()
@@ -205,57 +207,59 @@ for(link_loja in link_lojas){ # O objeto link_loja irá assumir os valores do obj
     html_nodes(".jFIGdy:nth-child(8) span") %>%
     html_text()
   
-  # Busca a quantidade de reclamações não respondidas
+  # Busca a quantidade de reclamaÃ§Ãµes nÃ£o respondidas
   nao_respondidas <- codigo %>% 
     html_nodes(".col-sm-6:nth-child(1) b") %>%
     html_text()
   
-  # Busca a quantidade de reclamações avaliadas
+  # Busca a quantidade de reclamaÃ§Ãµes avaliadas
   avaliadas <- codigo %>% 
     html_nodes(".col-sm-6+ .col-sm-6 b") %>%
     html_text()
   
-  # Junta todas as informações em uma tabela
+  # Junta todas as informaÃ§Ãµes em uma tabela
   tabela_empresa <- data.frame(empresa,indice_solucao,nao_respondidas,
                                avaliadas,nota,nota_consumidor,percent_voltariam,
                                qnt_reclamacoes,link_loja)
   
-  # Junta a tabela acima com os dados já salvos de outras empresas
+  # Junta a tabela acima com os dados jÃ¡ salvos de outras empresas
   info_basicas <-rbind(tabela_empresa,info_basicas)
   
 }
 ```
 
-FIM DAS INFORMAÇÕES BÁSICAS
+FIM DAS INFORMAÃ‡Ã•ES BÃSICAS
 
-#### COMEÇO DA BUSCA POR RECLAMAÇÕES DE CADA EMPRESA
+#### COMEÃ‡O DA BUSCA POR RECLAMAÃ‡Ã•ES DE CADA EMPRESA
 
-Adicionar 'lista-reclamacoes' na url para buscar as reclamações:
+Adicionar 'lista-reclamacoes' na url para buscar as reclamaÃ§Ãµes jÃ¡ avaliadas:
 
 
 ```{r,eval=F}
 link_reclamacoes<-paste0(link_lojas,"lista-reclamacoes/")
 ```
 
-Criar o data frame para armazenar todas as reclamações:
+Criar o data frame para armazenar todas as reclamaÃ§Ãµes:
 
 ```{r,eval=F}
-info_reclamacoes <-data.frame()
+info_reclamacoes_avaliadas <-data.frame()
 ```
 
-O código abaixo irá acessar cada uma das lojas e buscar todas as páginas definidas no looping. 
+O cÃ³digo abaixo irÃ¡ acessar cada uma das lojas e buscar todas as pÃ¡ginas definidas no looping. 
 
 ```{r,eval=F}
 # looping para mudar a loja
 for(link_pagina in link_reclamacoes){
   
-  #looping para mudar a página
+  #looping para mudar a pÃ¡gina
   for(pagina in 1:5){
+    teste_logico <-FALSE
+    while(teste_logico == FALSE){
+ 
+    #entrar na pÃ¡gina de reclamaÃ§Ãµes definida pelo objeto 'pagina'.
+    remDr$navigate(paste0(link_pagina,"?pagina=",pagina,"&status=EVALUATED"))
     
-    #entrar na página de reclamações definida pelo objeto 'pagina'.
-    remDr$navigate(paste0(link_pagina,"?pagina=",pagina))
-    
-    #ler todo o código da página acessada
+    #ler todo o cÃ³digo da pÃ¡gina acessada
     codigo_reclamacoes<- read_html(remDr$getPageSource()[[1]])
     
     #buscar o nome da empresa
@@ -263,42 +267,58 @@ for(link_pagina in link_reclamacoes){
       html_nodes(".company-title .ng-binding") %>%
       html_text()
     
-    #buscar o título da reclação
+    #buscar o tÃ­tulo da reclaÃ§Ã£o
     titulo_reclamacao<-codigo_reclamacoes %>% 
       html_nodes(".text-title") %>%
       html_text()
     
-    #buscar o status da reclamação
+    #buscar o status da reclamaÃ§Ã£o
     status_reclamacao<-codigo_reclamacoes %>% 
       html_nodes(".status-text") %>%
       html_text()
     
-    #buscar a cidade da reclamação
+    #buscar a cidade da reclamaÃ§Ã£o
     local_reclamacao<-codigo_reclamacoes %>% 
       html_nodes("#complains-anchor-top .hidden-xs.ng-binding") %>%
       html_text()
     
-    #buscar há quanto tempo a reclamação foi feita
+    #buscar hÃ¡ quanto tempo a reclamaÃ§Ã£o foi feita
     tempo_reclamacao<-codigo_reclamacoes %>% 
       html_nodes(".hourAgo") %>%
       html_text()
     
-    #juntar as informações obtidas
+    #teste lÃ³gico para o looping nÃ£o parar quando der algum bug
+    teste_logico <- length(empresa)>0 & length(titulo_reclamacao)>0 &
+        length(status_reclamacao)>0 & length(local_reclamacao)>0 &
+        length(tempo_reclamacao)>0
+    }
+    
+    #juntar as informaÃ§Ãµes obtidas
     info_pagina<-data.frame(empresa,titulo_reclamacao,status_reclamacao,local_reclamacao,tempo_reclamacao)
     
-    info_reclamacoes<-rbind(info_pagina,info_reclamacoes)
+    info_reclamacoes_avaliadas<-rbind(info_pagina,info_reclamacoes_avaliadas)
   }
 }
 ```
 
-FIM DA BUSCA POR RECLAMAÇÕES
+FIM DA BUSCA POR RECLAMAÃ‡Ã•ES
 
-Encerrar as conecções 
+Encerrar as conecÃ§Ãµes 
 ```{r,eval=F}
 remDr$close() #Fechar o navegador que abrimos
 rD$server$stop() #Parar o servidor
 rm(rD) #remover o objeto rD
 ```
+
+Salvar os dados obtidos:
+
+```{r,eval=F}
+write.table(info_basicas,"info_basicas_bruto.txt",sep = "\t",fileEncoding = "utf8",row.names = F)
+
+write.table(info_reclamacoes_avaliadas,"info_reclamacoes_bruto.txt",sep = "\t",fileEncoding = "utf8",row.names = F)
+
+```
+
 
 ## 6 Limpeza dos dados
 
@@ -306,11 +326,11 @@ rm(rD) #remover o objeto rD
 library(readr)
 info_basicas <- read_delim("info_basicas_bruto.txt", 
     "\t", escape_double = FALSE, trim_ws = TRUE)
-info_reclamacoes <- read_delim("info_reclamacoes_bruto.txt", 
+info_reclamacoes_avaliadas <- read_delim("info_reclamacoes_bruto.txt", 
     "\t", escape_double = FALSE, trim_ws = TRUE)
 ```
 
-Esse item não foi visto no Episódio #1, porém será explicado no Episódio #2, caso haja dúvidas.
+Esse item nÃ£o foi visto no EpisÃ³dio #1, porÃ©m serÃ¡ explicado no EpisÃ³dio #2, caso haja dÃºvidas.
 
 Estrutura geral do conjunto de dados ```info_basicas```:
 
@@ -318,63 +338,63 @@ Estrutura geral do conjunto de dados ```info_basicas```:
 str(info_basicas)
 ```
 
-Acima podemos ver que algumas variáveis numéricas estão como ```character```. Isso aconteceu porque estão com o símbolo de %.
+Acima podemos ver que algumas variÃ¡veis numÃ©ricas estÃ£o como ```character```. Isso aconteceu porque estÃ£o com o sÃ­mbolo de %.
 
-A função ```gsub``` localiza um texto padrão e o substitui pelo texto definido.
+A funÃ§Ã£o ```gsub``` localiza um texto padrÃ£o e o substitui pelo texto definido.
 
 Iremos substituir qualquer sinal de % por vazio.
 
 ```{r}
 info_basicas$indice_solucao <- gsub("[\\%,]", "", info_basicas$indice_solucao)
 info_basicas$percent_voltariam <- gsub("[\\%,]", "", info_basicas$percent_voltariam)
-#agora podemos transformar a variável da classe texto em numérica.
+#agora podemos transformar a variÃ¡vel da classe texto em numÃ©rica.
 info_basicas$indice_solucao<- as.numeric(info_basicas$indice_solucao)
 info_basicas$percent_voltariam<- as.numeric(info_basicas$percent_voltariam)
 ```
 
-Cabeçalho do cojunto de dados info_basicas
+CabeÃ§alho do cojunto de dados info_basicas
 
 ```{r}
 knitr::kable(head(info_basicas))
 ```
     
-Estrutura geral do conjunto de dados ```info_reclamacoes```:
+Estrutura geral do conjunto de dados ```info_reclamacoes_avaliadas```:
 
 ```{r}
-str(info_reclamacoes)
+str(info_reclamacoes_avaliadas)
 ```
 
 ```{r}
-knitr::kable(head(info_reclamacoes))
+knitr::kable(head(info_reclamacoes_avaliadas))
 ```
     
-Precisamos transformar a variável 'tempo_reclamacao' para numérica. 
+Precisamos transformar a variÃ¡vel 'tempo_reclamacao' para numÃ©rica. 
 
 Dificuldade: temos respostas em minutos e outras em horas.
 
-Solução: criei uma função ```ifelse```. 
+SoluÃ§Ã£o: criei uma funÃ§Ã£o ```ifelse```. 
 
-Iremos avaliar se cada linha do conjunto tem o texto 'horas' ou 'hora' para a variável 'tempo_reclamacao'.
+Iremos avaliar se cada linha do conjunto tem o texto 'horas' ou 'hora' para a variÃ¡vel 'tempo_reclamacao'.
 
-Caso seja verdadeiro, iremos extrair apenas os números e multiplicar por 60. Assim deixaremos todos os valores em **minutos**.
+Caso seja verdadeiro, iremos extrair apenas os nÃºmeros e multiplicar por 60. Assim deixaremos todos os valores em **minutos**.
 
-Caso seja falso, ou seja, o tempo esteja medido em minutos, iremos apenas extrair os números e eliminar o texto.
+Caso seja falso, ou seja, o tempo esteja medido em minutos, iremos apenas extrair os nÃºmeros e eliminar o texto.
 
 O resultado foi armazenado em uma nova coluna, chamada 'minutos'.
 
 ```{r}
-info_reclamacoes$minutos<-
-  ifelse(grepl(pattern = paste(c("horas","hora"),collapse = "|"), x = info_reclamacoes$tempo_reclamacao),#se o valor tiver em horas (ou hora) irá considerar verdadeiro.
-         parse_number(info_reclamacoes$tempo_reclamacao)*60, #busca apenas os números da coluna 'tempo_reclamacao' e multiplica por 60.
-       parse_number(info_reclamacoes$tempo_reclamacao)#busca apenas os números da coluna 'tempo_reclamacao'
+info_reclamacoes_avaliadas$minutos<-
+  ifelse(grepl(pattern = paste(c("horas","hora"),collapse = "|"), x = info_reclamacoes_avaliadas$tempo_reclamacao),#se o valor tiver em horas (ou hora) irÃ¡ considerar verdadeiro.
+         parse_number(info_reclamacoes_avaliadas$tempo_reclamacao)*60, #busca apenas os nÃºmeros da coluna 'tempo_reclamacao' e multiplica por 60.
+       parse_number(info_reclamacoes_avaliadas$tempo_reclamacao)#busca apenas os nÃºmeros da coluna 'tempo_reclamacao'
        )
 ```
 
-Cabeçalho do conjunto ```info_reclamacoes``` após limpeza dos dados:
+CabeÃ§alho do conjunto ```info_reclamacoes_avaliadas``` apÃ³s limpeza dos dados:
 
 ```{r}
-#info_reclamacoes
-knitr::kable(head(info_reclamacoes))
+#info_reclamacoes_avaliadas
+knitr::kable(head(info_reclamacoes_avaliadas))
 ```    
     
 
@@ -386,17 +406,17 @@ Salvar o conjunto ```info_basicas```
 write.table(info_basicas,"info_basicas.txt",sep = "\t",fileEncoding = "utf8",row.names = F)
 ```
 
-Salvar o conjunto ```info_reclamacoes```
+Salvar o conjunto ```info_reclamacoes_avaliadas```
 
 ```{r}
-write.table(info_reclamacoes,"info_reclamacoes.txt",sep = "\t",fileEncoding = "utf8",row.names = F)
+write.table(info_reclamacoes_avaliadas,"info_reclamacoes_avaliadas.txt",sep = "\t",fileEncoding = "utf8",row.names = F)
 ```
 
-## 7 Repositório no Github
+## 7 RepositÃ³rio no Github
 
-Todos os arquivos utilizados na Websérie Reclame Aqui com Ciência de Dados + Conjuntos de dados ficarão disponíveis no Github.
+Todos os arquivos utilizados na WebsÃ©rie Reclame Aqui com CiÃªncia de Dados + Conjuntos de dados ficarÃ£o disponÃ­veis no Github.
 
 [Para acessar, clique aqui.](https://github.com/luisotavio88/webserie_reclameaqui){target="_blank"}
 
 
-## No dia 05/04 (próxima segunda-feira) às 20 horas teremos o Episódio #2 da Websérie Reclame Aqui com Ciência de Dados.
+## No dia 05/04 (prÃ³xima segunda-feira) Ã s 20 horas teremos o EpisÃ³dio #2 da WebsÃ©rie Reclame Aqui com CiÃªncia de Dados.
