@@ -1,0 +1,423 @@
+---
+title: "Como criar uma dashboard que impressiona usando o Shiny | Episódio #3"
+author: "luisotavio.pro"
+date: "12/03/2021"
+output:
+  rmarkdown::html_document:
+    includes:
+      in_header: pixel_senha.html
+theme: lumen
+---
+
+(esse material complementar foi 100% produzido usando a linguagem R)
+
+# Como criar uma dashboard que impressiona usando o Shiny| Reclame Aqui com Ciência de Dados #3
+
+Esse é um material complementar, ou seja, não substitui você assistir ao Episódio #3.
+
+[**Clique aqui para assistir o Episódio 3 da Websérie**](https://youtu.be/iEcEid3fDH0){target="_blank"}
+
+OBJETIVO DO EPISÓDIO #3
+
+**Você irá aprender um painel interativo que impressiona!**
+
+✅ O painel interativo permite que o usuário interaja com seus gráficos, tabelas ou mapas. Ele escolhe quais resultados deseja analisar.
+
+
+✅ O **Shiny** é uma biblioteca da linguagem R que nos permite criar paineis interativos com grande facilidade. 
+
+O nosso painel interativo também é chamado de **aplicação**.
+
+Uma aplicação Shiny é composta de 3 elementos:
+
+1 - **UI** (User Interface)
+
+O UI é a interface que ficará visível para o usuário.
+
+2 - **Server**
+
+O server é onde a mágica acontece. Caso o usuário faça alguma solicitação na UI, todos os resultados serão recalculados no **server**.
+
+A solicitação do usuário pode ser a alteração de um _input_. Por exemplo, está selecionado para mostrar o resultado de *homens* e o usuário altera para mostrar o resultado das *mulheres*. 
+
+Essa alteração irá gerar um recálculo dos resultados e isso acontecerá no server.
+
+
+3 - Função para unir o UI e o Server.
+
+Portanto, o esqueleto de uma aplicação Shiny segue o seguinte padrão:
+
+```{r, eval=FALSE}
+library(shiny)
+
+# PRIMEIRO ELEMENTO
+ui <- fluidPage(
+  
+)
+
+#SEGUNDO ELEMENTO
+server <- function(input, output,session) {
+  
+}
+
+#TERCEIRO ELEMENTO
+shinyApp(ui = ui, server = server)
+
+```
+
+
+### 1 - BUSCANDO OS DADOS QUE IREMOS COLOCAR NO PAINEL
+
+Foram utilizadas 4 conjuntos de dados para construir o nosso painel interativo.
+
+Todas os 4 foram buscados no arquivo 'carregar_dados.R' e salvas no ambiente do R.
+
+```{r, eval=FALSE}
+library(readr) # biblioteca para ler os dados
+
+## informações básicas de cada empresa
+info_basicas <- read_delim("~/info_basicas.txt", 
+                           "\t", escape_double = FALSE, trim_ws = TRUE)
+
+## informações das reclamações recebidas por cada empresa
+info_reclamacoes_avaliadas <- read_delim("~/info_reclamacoes_avaliadas.txt", 
+                                         "\t", escape_double = FALSE, trim_ws = TRUE)
+
+## Palavras utilizadas e status das reclamações de cada empresa 
+analise_empresa_palavras <- read_delim("~/analise_empresa_palavras.txt", 
+                                       "\t", escape_double = FALSE, trim_ws = TRUE)
+
+## Palavras utilizadas e status das reclamações 
+analise_geral_palavra <- read_delim("~/analise_geral_palavra.txt", 
+                                    "\t", escape_double = FALSE, trim_ws = TRUE)
+
+#criar o objeto qnt_palavras_empresa tirando a variável percentual_solucao do conjunto de dados analise_empresa_palavras
+qnt_palavras_empresa <- analise_empresa_palavras %>%
+  select(-percentual_solucao )
+
+#calculando a média de vezes que cada palavra apareceu nas reclamações, considerando todas as empresas.
+qnt_palavras_geral <- analise_geral_palavra %>%
+  select(-percentual_solucao ) %>%
+  mutate(qnt_palavra = qnt_palavra/5)
+
+# salvando os dados no arquivo .RData
+save.image(".RData")
+```
+
+
+### 2 - A NOSSA APLICAÇÃO
+
+Carregando as bibliotecas
+
+```{r, eval=FALSE}
+library(shiny) 
+library(plotly) # será útil para fazer nossos gráficos
+library(plyr) 
+library(dplyr) # manipulação de dados
+library(magrittr) # operador %<>%
+library(wordcloud2) # construir o gráfico nuvem de palavras
+```
+
+Carregando os dados
+
+```{r, eval=FALSE}
+load("~/.RData")
+```
+
+Iremos criar um vetor com os nomes originais das variáveis (que serão usados na linguagem R) e os nomes que desejamos mostrar para os usuários (com acentos e espaços).
+
+```{r, eval=FALSE}
+menu_comparacao<-c("Índice de Solução"="indice_solucao",
+                   "Não respondidas"="nao_respondidas",
+                   "Qnt. Avaliadas"="avaliadas",
+                   "Nota RA"="nota",
+                   "Nota do Consumidor"="nota_consumidor",
+                   "% que voltaria"="percent_voltariam",
+                   "Qnt. Reclamações"="qnt_reclamacoes")
+```
+
+#### Elemento 1 - Interface do usuário - UI
+
+```{r, eval=FALSE}
+## o comando navbarPage define os menus com um layout bem legal
+ui <- navbarPage("Websérie Reclame Aqui com Ciência de Dados",
+                 #o comando tabPanel irá definir o conteúdo de cada aba dentro do navbarPage
+                 tabPanel("Início",
+                          #centralizando o conteúdo da página
+                          class = "text-center",
+                          #imagem da logo
+                          imageOutput(outputId = "logo", 
+                                      height = "200px"),
+                          h1("Episódio #3"),
+                          #gráfico de nuvem de palavras
+                          wordcloud2Output('wordcloud2')),
+                 
+                 # SEGUNDA ABA
+                 tabPanel("Comparação Geral",
+                          #iremos separar a página em 2 colunas: uma na esquerda de comprimento = 4 e outra na direita, com comprimento = 8.
+                          column(width = 4,
+                                 
+                                 #o comando selectInput irá definir o nosso menu de múltipla escolha (várias opções e só uma será escolhida)
+                                 selectInput(inputId = "comparacao_v1", 
+                                             label = "Quais resultados você quer comparar?", 
+                                             choices = menu_comparacao,
+                                             width = "100%"),
+                                 selectInput(inputId = "comparacao_v2", 
+                                             label = "Quais resultados você quer comparar?", 
+                                             choices = menu_comparacao,
+                                             selected = menu_comparacao[2],
+                                             width = "100%")
+                          ),
+                          column(8,
+                                 
+                                 # chamando o output do gráfico de comparação entre as empresas
+                                 plotly::plotlyOutput(outputId = "comparacao_graf", width = "100%") 
+                          )
+                 ),
+                 tabPanel("Título vs Solução",
+                          column(4,
+                                 selectInput(inputId = "relacao_empresa", 
+                                             label = "Qual empresa você deseja avaliar?", 
+                                             choices = info_basicas$empresa,
+                                             width = "100%")
+                          ),
+                          column(8,
+                                 plotly::plotlyOutput(outputId = "relacao_graf_maiores", width = "100%"),
+                                 plotly::plotlyOutput(outputId = "relacao_graf_menores", width = "100%")
+                          )
+                 ),
+                 tabPanel("Reclamações mais frequentes",
+                          column(4,
+                                 selectInput(inputId = "mais_aparecem_empresa", 
+                                             label = "Qual empresa você deseja avaliar?", 
+                                             choices = info_basicas$empresa,
+                                             width = "100%")
+                          ),
+                          column(8,
+                                 plotly::plotlyOutput(outputId = "mais_aparecem_graf", width = "100%"),
+                          )
+                          
+                 )
+                 
+)
+
+```
+
+#### Elemento 2 - Server
+
+```{r, eval=FALSE}
+server <- function(input, output,session) {
+  
+  #### Logo do projeto - carregando a imagem
+  output$logo <- renderImage({
+    list(src = "logo.jpeg",
+         alt = "")
+  }, deleteFile = FALSE)
+  
+  ######## GRÁFICO - NÚVEM DE PALAVRAS
+  # Ajuste com os dados
+  wordcloud_dados <- analise_geral_palavra %>% 
+    select(word,qnt_palavra) %>%
+    rename(freq = qnt_palavra)
+  
+  #criação do gráfico
+  output$wordcloud2 <- renderWordcloud2({
+    wordcloud2(data = wordcloud_dados)
+  })
+  
+  
+  #######comparação entre as empresas
+  # Cruzamento de variáveis
+  output$comparacao_graf <- plotly::renderPlotly({
+    
+    #definindo detalhes do gráfico
+    ay <- list(
+      overlaying = "y",
+      side = "right"
+    )
+    
+    # Criando o gráfico
+    plot_ly(data = info_basicas) %>%
+      ### Variável 1
+      add_lines(x = ~empresa, y = ~get(input$comparacao_v1), name = names(menu_comparacao)[menu_comparacao==input$comparacao_v1]) %>%
+      ### variável 2
+      add_lines(x = ~empresa, y = ~get(input$comparacao_v2), name = names(menu_comparacao)[menu_comparacao==input$comparacao_v2], yaxis = "y2") %>%
+      layout(
+        font = list(color = "black"),
+        title = "Comparação entre empresas", 
+        yaxis = list(title=""),
+        yaxis2 = ay,
+        xaxis = list(title="", tickangle = 60)
+      )
+  })
+  
+  ##### Relação entre palavras usadas no título
+  # e a solução da reclamação
+  
+  relacao_dados <- reactive({
+    #filtrar pela empresa escolhida
+    relacao_palavra_empresa <- analise_empresa_palavras %>%
+      select(-qnt_palavra) %>%
+      filter(empresa == input$relacao_empresa)
+    #filtrar pelos MAIORES % de solução
+    relacao_palavra_empresa_maiores <- relacao_palavra_empresa %>%
+      slice_max(n = 5,order_by = percentual_solucao,with_ties=F)
+    
+    #filtrar pelos MENORES % de solução
+    relacao_palavra_empresa_menores <- relacao_palavra_empresa %>%
+      slice_min(n = 5,order_by = percentual_solucao,with_ties=F)
+    
+    #Considerando todas as empresas
+    relacao_palavra_geral<- analise_geral_palavra %>%
+      mutate(empresa = "geral") %>%
+      select(-qnt_palavra)
+    
+    #filtrando as mesmas palavras no relacao_palavra_geral e relacao_palavra_empresa_maiores
+    relacao_palavra_geral_maiores <-
+      relacao_palavra_geral[relacao_palavra_geral$word %in%
+                              relacao_palavra_empresa_maiores$word,]
+    
+    #filtrando as mesmas palavras no relacao_palavra_geral e relacao_palavra_empresa_menores
+    relacao_palavra_geral_menores <-
+      relacao_palavra_geral[relacao_palavra_geral$word %in%
+                              relacao_palavra_empresa_menores$word,]
+    
+    
+    ### resultado final: juntar o resultado geral + empresa
+    concatenado_maiores <-  data.frame(rbind(relacao_palavra_empresa_maiores,relacao_palavra_geral_maiores))
+    
+    # Transformando os dados para o formato wide
+    # veja explicação da transformação long -> wide no final dessa página
+    concatenado_maiores <- reshape(concatenado_maiores, 
+                                   idvar = "word", timevar = "empresa", direction = "wide")
+    
+    # Transformando os dados para o formato wide
+    # veja explicação da transformação long -> wide no final dessa página
+    concatenado_menores <- data.frame(rbind(relacao_palavra_empresa_menores,relacao_palavra_geral_menores))
+    concatenado_menores <- reshape(concatenado_menores, 
+                                   idvar = "word", timevar = "empresa", direction = "wide")
+    
+    
+    #colocando nomes genéricos para as colunas
+    names(concatenado_maiores) <-c("palavra",
+                                   "percentual_loja",
+                                   "percentual_geral")
+    names(concatenado_menores) <-c("palavra",
+                                   "percentual_loja",
+                                   "percentual_geral")
+    #output da função
+    list(concatenado_maiores,concatenado_menores)
+  })
+  
+  ## Gráfico relação entre palavras do título e solução
+  ## criação do gráfico com os MAIORES %
+  
+  output$relacao_graf_maiores <- plotly::renderPlotly({
+    plot_ly(data = relacao_dados()[[1]],x = ~palavra, y = ~percentual_loja, type = 'bar', name = '% Empresa') %>%
+      add_trace(y = ~percentual_geral, name = '% geral') %>%
+      layout(title = "Pontos Fortes da Empresa",
+             yaxis = list(title = '% Casos Resolvidos'),
+             xaxis = list(title = ''),barmode = 'group')
+    
+  })
+  
+  ## criação do gráfico com os MENORES %
+  
+  output$relacao_graf_menores <- plotly::renderPlotly({
+    
+    plot_ly(data = relacao_dados()[[2]],x = ~palavra, y = ~percentual_loja, type = 'bar', name = '% Empresa') %>%
+      add_trace(y = ~percentual_geral, name = '% geral') %>%
+      layout(title = "Pontos Fracos da Empresa",
+             yaxis = list(title = '% Casos Resolvidos'),
+             xaxis = list(title = ''),barmode = 'group')        
+  })
+  
+  
+  ####### Dados - Palavras que mais aparecem
+  mais_aparecem <-reactive({
+    # filtrar por empresa que o usuário escolheu
+    qnt_palavras_empresa_filtrado <- qnt_palavras_empresa %>%
+      filter(empresa == input$mais_aparecem_empresa) %>%
+      slice_max(n = 5,order_by = qnt_palavra,with_ties=F) 
+    
+    # Filtrar as mesmas palavras em qnt_palavras_geral e qnt_palavras_empresa_filtrado
+    qnt_palavras_geral <- 
+      qnt_palavras_geral[qnt_palavras_geral$word %in%
+                           qnt_palavras_empresa_filtrado$word,]
+    qnt_palavras_geral$empresa<-"geral"
+    
+    concatenado_palavras <-  data.frame(rbind(qnt_palavras_empresa_filtrado,qnt_palavras_geral))
+    
+    # Transformando os dados para o formato wide
+    # veja explicação da transformação long -> wide no final dessa página
+    concatenado_palavras <- reshape(concatenado_palavras, 
+                                    idvar = "word", timevar = "empresa", direction = "wide")
+    names(concatenado_palavras)<-c("palavra","qnt_loja","qnt_geral")
+    concatenado_palavras
+  })
+  
+  ### Criação do gráfico - Palavras mais usadas nas reclamações da Empresa
+  output$mais_aparecem_graf <- plotly::renderPlotly({
+    
+    plot_ly(data = mais_aparecem(),x = ~qnt_loja, y = ~palavra, 
+            type = 'bar', name = 'Quantidade Empresa', orientation = 'h') %>%
+      add_trace(x = ~qnt_geral, name = 'Quantidade geral') %>%
+      layout(title = "Palavras mais usadas nas reclamações da Empresa",
+             yaxis = list(title = ''),
+             xaxis = list(title = 'Quantidade de vezes'),barmode = 'group')        
+  })
+  
+}
+```
+
+
+### Elemento 3 - Executando a aplicação
+
+```{r, eval=FALSE}
+# Executar a aplicação
+shinyApp(ui = ui, server = server)
+```
+
+
+### Explicação complementar: os formatos de dados *wide* e *long*
+
+```{r}
+dat1 <- data.frame(
+  empresa = rep(c("empresa A", "empresa B"), each=4),
+  produto = rep(1:4, 2),
+  nota = runif(n = 8,min =  1, max = 10)
+)
+
+# idvar -> variável que identifica quais são os grupos
+# timevar -> variável que diferencia os elementos do mesmo grupo
+dat1
+```
+
+```{r}
+# Formato wide
+wide <- reshape(dat1, idvar = "empresa", timevar = "produto", direction = "wide")
+wide
+```
+
+```{r}
+# Formato long
+long <- reshape(wide, idvar = "empresa", 
+                timevar = "produto", 
+                direction = "long",
+                new.row.names = 1:8)
+long
+
+```
+
+
+
+### Repositório no Github
+
+Todos os arquivos utilizados na Websérie Reclame Aqui com Ciência de Dados + Conjuntos de dados ficarão disponíveis no Github.
+
+[Para acessar, clique aqui.](https://github.com/luisotavio88/webserie_reclameaqui){target="_blank"}
+
+
+## Lembre-se que o segredo do sucesso é a disciplina e a constância! Toda segunda-feira às 20hs temos um encontro marcado.
+
+## Te espero nessa segunda-feira às 20hs para a nossa próxima live sobre Ciência de Dados.

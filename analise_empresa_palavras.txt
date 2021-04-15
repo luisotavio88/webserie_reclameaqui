@@ -1,0 +1,309 @@
+"percentual_solucao"	"empresa"	"word"	"qnt_palavra"
+0.669260700389105	"Carrefour -  Loja Online"	"produto"	257
+0.715909090909091	"Carrefour -  Loja Online"	"entregue"	88
+0.666666666666667	"Carrefour -  Loja Online"	"devolução"	57
+0.680851063829787	"Carrefour -  Loja Online"	"valor"	47
+0.75	"Carrefour -  Loja Online"	"pago"	24
+0.603448275862069	"Carrefour -  Loja Online"	"carrefour"	116
+0.617886178861789	"Carrefour -  Loja Online"	"compra"	123
+0.541666666666667	"Carrefour -  Loja Online"	"cancelada"	24
+0.704918032786885	"Carrefour -  Loja Online"	"reembolso"	61
+0.28	"Carrefour -  Loja Online"	"propaganda"	25
+0.28	"Carrefour -  Loja Online"	"enganosa"	25
+0.363636363636364	"Carrefour -  Loja Online"	"produtos"	11
+0.5	"Carrefour -  Loja Online"	"estoque"	16
+0.686131386861314	"Carrefour -  Loja Online"	"entrega"	137
+0.60377358490566	"Carrefour -  Loja Online"	"atraso"	53
+0.727272727272727	"Carrefour -  Loja Online"	"demora"	22
+0.6	"Carrefour -  Loja Online"	"dias"	25
+0.757575757575758	"Carrefour -  Loja Online"	"prazo"	33
+0.636363636363636	"Carrefour -  Loja Online"	"chegou"	11
+0.58974358974359	"Carrefour -  Loja Online"	"troca"	39
+0.737704918032787	"Carrefour -  Loja Online"	"dinheiro"	61
+0.64	"Carrefour -  Loja Online"	"meses"	25
+0.714285714285714	"Carrefour -  Loja Online"	"retorno"	14
+0.754098360655738	"Carrefour -  Loja Online"	"pedido"	61
+0.753623188405797	"Carrefour -  Loja Online"	"recebi"	69
+0.631578947368421	"Carrefour -  Loja Online"	"nao"	38
+0.6875	"Carrefour -  Loja Online"	"mercadoria"	16
+0.697674418604651	"Carrefour -  Loja Online"	"site"	43
+0.717391304347826	"Carrefour -  Loja Online"	"comprei"	46
+0.621621621621622	"Carrefour -  Loja Online"	"cancelamento"	37
+0.786516853932584	"Carrefour -  Loja Online"	"estorno"	89
+0.4	"Carrefour -  Loja Online"	"ainda"	10
+0.8	"Carrefour -  Loja Online"	"realizada"	10
+0.666666666666667	"Carrefour -  Loja Online"	"loja"	24
+0.647058823529412	"Carrefour -  Loja Online"	"online"	17
+0.421052631578947	"Carrefour -  Loja Online"	"cliente"	19
+0.684210526315789	"Carrefour -  Loja Online"	"empresa"	19
+0.653846153846154	"Carrefour -  Loja Online"	"entregaram"	26
+0.666666666666667	"Carrefour -  Loja Online"	"falta"	30
+0.583333333333333	"Carrefour -  Loja Online"	"defeito"	12
+0.65	"Carrefour -  Loja Online"	"cartão"	20
+0.7	"Carrefour -  Loja Online"	"atrasada"	10
+0.529411764705882	"Carrefour -  Loja Online"	"atendimento"	17
+0.692307692307692	"Carrefour -  Loja Online"	"quero"	13
+0.909090909090909	"Carrefour -  Loja Online"	"recebido"	11
+0.75	"Carrefour -  Loja Online"	"consumidor"	16
+0.769230769230769	"Carrefour -  Loja Online"	"descaso"	13
+0.823529411764706	"Carrefour -  Loja Online"	"errado"	17
+0.642857142857143	"Carrefour -  Loja Online"	"editado_ra"	14
+0.909090909090909	"Carrefour -  Loja Online"	"celular"	11
+0.833333333333333	"Carrefour -  Loja Online"	"cancelar"	12
+0.75	"Carrefour -  Loja Online"	"devolvido"	12
+0.714285714285714	"Carrefour -  Loja Online"	"venda"	14
+0.692307692307692	"Carrefour -  Loja Online"	"pagamento"	13
+0.692307692307692	"Carrefour -  Loja Online"	"entregam"	13
+0.75	"Carrefour -  Loja Online"	"paguei"	12
+0.615384615384615	"Carrefour -  Loja Online"	"consigo"	13
+0.6	"Carrefour -  Loja Online"	"errada"	10
+0.928571428571429	"Magazine Luiza - Loja Online"	"troca"	28
+0.914772727272727	"Magazine Luiza - Loja Online"	"produto"	176
+1	"Magazine Luiza - Loja Online"	"celular"	10
+0.952380952380952	"Magazine Luiza - Loja Online"	"dinheiro"	21
+0.859154929577465	"Magazine Luiza - Loja Online"	"atraso"	71
+0.885714285714286	"Magazine Luiza - Loja Online"	"entrega"	210
+0.895522388059702	"Magazine Luiza - Loja Online"	"atrasada"	67
+0.923076923076923	"Magazine Luiza - Loja Online"	"problema"	13
+0.9	"Magazine Luiza - Loja Online"	"aprovação"	10
+0.87603305785124	"Magazine Luiza - Loja Online"	"pedido"	121
+0.923076923076923	"Magazine Luiza - Loja Online"	"veio"	13
+0.80952380952381	"Magazine Luiza - Loja Online"	"errado"	21
+0.91304347826087	"Magazine Luiza - Loja Online"	"loja"	23
+0.914893617021277	"Magazine Luiza - Loja Online"	"magazine"	47
+0.902439024390244	"Magazine Luiza - Loja Online"	"luiza"	41
+0.8	"Magazine Luiza - Loja Online"	"descaso"	10
+0.91304347826087	"Magazine Luiza - Loja Online"	"transportadora"	23
+0.88	"Magazine Luiza - Loja Online"	"demora"	25
+0.8	"Magazine Luiza - Loja Online"	"falta"	25
+0.848484848484849	"Magazine Luiza - Loja Online"	"estorno"	33
+0.929577464788732	"Magazine Luiza - Loja Online"	"entregue"	71
+0.851851851851852	"Magazine Luiza - Loja Online"	"defeito"	27
+1	"Magazine Luiza - Loja Online"	"retirada"	12
+0.894736842105263	"Magazine Luiza - Loja Online"	"devolução"	19
+0.942857142857143	"Magazine Luiza - Loja Online"	"comprei"	35
+0.897959183673469	"Magazine Luiza - Loja Online"	"recebi"	49
+0.928571428571429	"Magazine Luiza - Loja Online"	"reembolso"	14
+0.888888888888889	"Magazine Luiza - Loja Online"	"nao"	18
+0.928571428571429	"Magazine Luiza - Loja Online"	"magalu"	28
+0.962962962962963	"Magazine Luiza - Loja Online"	"site"	27
+0.909090909090909	"Magazine Luiza - Loja Online"	"vale"	11
+1	"Magazine Luiza - Loja Online"	"recebido"	10
+0.5	"Magazine Luiza - Loja Online"	"cliente"	16
+0.882352941176471	"Magazine Luiza - Loja Online"	"cartão"	17
+0.9	"Magazine Luiza - Loja Online"	"prazo"	30
+0.833333333333333	"Magazine Luiza - Loja Online"	"atendimento"	12
+0.888888888888889	"Magazine Luiza - Loja Online"	"cancelamento"	45
+1	"Magazine Luiza - Loja Online"	"consta"	12
+0.681818181818182	"Magazine Luiza - Loja Online"	"cancelado"	22
+0.928571428571429	"Magazine Luiza - Loja Online"	"atrasado"	14
+0.866666666666667	"Magazine Luiza - Loja Online"	"produtos"	15
+0.786516853932584	"Magazine Luiza - Loja Online"	"compra"	89
+0.842105263157895	"Magazine Luiza - Loja Online"	"pagamento"	19
+0.869565217391304	"Magazine Luiza - Loja Online"	"dias"	23
+0.8	"Magazine Luiza - Loja Online"	"cancelaram"	10
+0.714285714285714	"Magazine Luiza - Loja Online"	"endereço"	14
+0.666666666666667	"Magazine Luiza - Loja Online"	"chegou"	15
+0.8	"Magazine Luiza - Loja Online"	"valor"	15
+0.8125	"Magazine Luiza - Loja Online"	"propaganda"	16
+0.75	"Magazine Luiza - Loja Online"	"enganosa"	16
+1	"Magazine Luiza - Loja Online"	"editado_ra"	13
+0.730769230769231	"Magazine Luiza - Loja Online"	"empresa"	26
+1	"Magazine Luiza - Loja Online"	"consigo"	17
+0.882352941176471	"Magazine Luiza - Loja Online"	"ainda"	17
+0.9	"Magazine Luiza - Loja Online"	"compras"	10
+0.923076923076923	"Magazine Luiza - Loja Online"	"cupom"	13
+0.8	"Magazine Luiza - Loja Online"	"fiz"	10
+0.916666666666667	"Magazine Luiza - Loja Online"	"entregaram"	12
+0.75	"Magazine Luiza - Loja Online"	"cancelada"	12
+1	"Magazine Luiza - Loja Online"	"nunca"	12
+0.9	"Magazine Luiza - Loja Online"	"após"	10
+0.914728682170543	"Ponto Frio - Loja Online"	"entrega"	129
+0.818181818181818	"Ponto Frio - Loja Online"	"editado_ra"	11
+0.879699248120301	"Ponto Frio - Loja Online"	"pontos"	133
+0.835616438356164	"Ponto Frio - Loja Online"	"compra"	73
+0.9375	"Ponto Frio - Loja Online"	"creditados"	48
+0.857142857142857	"Ponto Frio - Loja Online"	"black"	21
+0.863636363636364	"Ponto Frio - Loja Online"	"friday"	22
+0.82051282051282	"Ponto Frio - Loja Online"	"tudoazul"	39
+0.830188679245283	"Ponto Frio - Loja Online"	"promoção"	53
+0.862068965517241	"Ponto Frio - Loja Online"	"milhas"	29
+0.868686868686869	"Ponto Frio - Loja Online"	"azul"	99
+0.909090909090909	"Ponto Frio - Loja Online"	"comprei"	22
+0.821428571428571	"Ponto Frio - Loja Online"	"loja"	28
+0.785714285714286	"Ponto Frio - Loja Online"	"ainda"	14
+0.6	"Ponto Frio - Loja Online"	"retirada"	10
+0.88	"Ponto Frio - Loja Online"	"falta"	25
+0.837209302325581	"Ponto Frio - Loja Online"	"pontuação"	43
+0.876543209876543	"Ponto Frio - Loja Online"	"tudo"	81
+0.923076923076923	"Ponto Frio - Loja Online"	"atrasada"	13
+0.6875	"Ponto Frio - Loja Online"	"propaganda"	32
+0.717948717948718	"Ponto Frio - Loja Online"	"enganosa"	39
+0.928571428571429	"Ponto Frio - Loja Online"	"crédito"	14
+0.830769230769231	"Ponto Frio - Loja Online"	"ponto"	130
+0.829457364341085	"Ponto Frio - Loja Online"	"frio"	129
+0.919354838709677	"Ponto Frio - Loja Online"	"recebi"	62
+0.875	"Ponto Frio - Loja Online"	"nao"	32
+0.848275862068966	"Ponto Frio - Loja Online"	"produto"	145
+0.912280701754386	"Ponto Frio - Loja Online"	"entregue"	57
+0.857142857142857	"Ponto Frio - Loja Online"	"demora"	21
+0.833333333333333	"Ponto Frio - Loja Online"	"dinheiro"	18
+1	"Ponto Frio - Loja Online"	"data"	11
+0.901639344262295	"Ponto Frio - Loja Online"	"atraso"	61
+0.904761904761905	"Ponto Frio - Loja Online"	"descaso"	21
+0.785714285714286	"Ponto Frio - Loja Online"	"cartão"	14
+0.782608695652174	"Ponto Frio - Loja Online"	"consigo"	23
+0.833333333333333	"Ponto Frio - Loja Online"	"reembolso"	12
+1	"Ponto Frio - Loja Online"	"coleta"	11
+0.933333333333333	"Ponto Frio - Loja Online"	"estorno"	45
+1	"Ponto Frio - Loja Online"	"chegou"	15
+0.928571428571429	"Ponto Frio - Loja Online"	"defeito"	28
+0.857142857142857	"Ponto Frio - Loja Online"	"devolução"	21
+0.793103448275862	"Ponto Frio - Loja Online"	"cancelamento"	29
+1	"Ponto Frio - Loja Online"	"problema"	10
+0.8	"Ponto Frio - Loja Online"	"cliente"	20
+0.909090909090909	"Ponto Frio - Loja Online"	"após"	11
+0.764705882352941	"Ponto Frio - Loja Online"	"empresa"	17
+0.9375	"Ponto Frio - Loja Online"	"prazo"	32
+0.888888888888889	"Ponto Frio - Loja Online"	"pedido"	72
+0.88	"Ponto Frio - Loja Online"	"valor"	25
+0.769230769230769	"Ponto Frio - Loja Online"	"site"	26
+0.545454545454545	"Ponto Frio - Loja Online"	"atendimento"	22
+0.96551724137931	"Ponto Frio - Loja Online"	"troca"	29
+0.923076923076923	"Ponto Frio - Loja Online"	"conta"	13
+0.894736842105263	"Ponto Frio - Loja Online"	"veio"	19
+0.923076923076923	"Ponto Frio - Loja Online"	"transportadora"	13
+0.952380952380952	"Ponto Frio - Loja Online"	"dias"	21
+0.916666666666667	"Ponto Frio - Loja Online"	"cancelado"	12
+0.818181818181818	"Ponto Frio - Loja Online"	"produtos"	11
+0.615384615384615	"Ponto Frio - Loja Online"	"pagamento"	13
+0.9	"Ponto Frio - Loja Online"	"informações"	10
+0.692307692307692	"Ponto Frio - Loja Online"	"consumidor"	13
+0.8	"Ponto Frio - Loja Online"	"errado"	10
+0.692307692307692	"Ponto Frio - Loja Online"	"venda"	13
+0.844919786096257	"Casas Bahia - Loja Online"	"produto"	187
+0.785714285714286	"Casas Bahia - Loja Online"	"cancelado"	14
+0.923076923076923	"Casas Bahia - Loja Online"	"quero"	13
+0.851063829787234	"Casas Bahia - Loja Online"	"estorno"	47
+0.5	"Casas Bahia - Loja Online"	"cartão"	18
+0.833333333333333	"Casas Bahia - Loja Online"	"consta"	12
+0.875	"Casas Bahia - Loja Online"	"entregue"	72
+0.819004524886878	"Casas Bahia - Loja Online"	"entrega"	221
+0.772727272727273	"Casas Bahia - Loja Online"	"propaganda"	22
+0.791666666666667	"Casas Bahia - Loja Online"	"enganosa"	24
+1	"Casas Bahia - Loja Online"	"tudo"	11
+0.923076923076923	"Casas Bahia - Loja Online"	"azul"	13
+0.757575757575758	"Casas Bahia - Loja Online"	"compra"	66
+0.692307692307692	"Casas Bahia - Loja Online"	"site"	13
+0.706666666666667	"Casas Bahia - Loja Online"	"casas"	75
+0.725	"Casas Bahia - Loja Online"	"bahia"	80
+0.88	"Casas Bahia - Loja Online"	"comprei"	25
+0.866666666666667	"Casas Bahia - Loja Online"	"realizada"	15
+0.833333333333333	"Casas Bahia - Loja Online"	"retirada"	12
+0.818181818181818	"Casas Bahia - Loja Online"	"loja"	33
+0.782608695652174	"Casas Bahia - Loja Online"	"nao"	23
+0.923076923076923	"Casas Bahia - Loja Online"	"cumpre"	13
+0.852459016393443	"Casas Bahia - Loja Online"	"prazo"	61
+0.861111111111111	"Casas Bahia - Loja Online"	"troca"	36
+0.72	"Casas Bahia - Loja Online"	"pagamento"	25
+0.789473684210526	"Casas Bahia - Loja Online"	"dias"	19
+0.764705882352941	"Casas Bahia - Loja Online"	"atendimento"	17
+1	"Casas Bahia - Loja Online"	"venda"	10
+0.846153846153846	"Casas Bahia - Loja Online"	"errado"	13
+0.783783783783784	"Casas Bahia - Loja Online"	"falta"	37
+0.818181818181818	"Casas Bahia - Loja Online"	"respeito"	11
+0.928571428571429	"Casas Bahia - Loja Online"	"cliente"	14
+0.8	"Casas Bahia - Loja Online"	"valor"	25
+0.857142857142857	"Casas Bahia - Loja Online"	"pago"	14
+0.785714285714286	"Casas Bahia - Loja Online"	"devolução"	14
+0.75	"Casas Bahia - Loja Online"	"demora"	20
+0.857142857142857	"Casas Bahia - Loja Online"	"atraso"	84
+0.785714285714286	"Casas Bahia - Loja Online"	"mercadoria"	14
+1	"Casas Bahia - Loja Online"	"atrasada"	10
+0.771428571428571	"Casas Bahia - Loja Online"	"pedido"	70
+1	"Casas Bahia - Loja Online"	"reembolso"	13
+1	"Casas Bahia - Loja Online"	"dia"	12
+0.863636363636364	"Casas Bahia - Loja Online"	"problema"	22
+0.818181818181818	"Casas Bahia - Loja Online"	"defeito"	22
+0.923076923076923	"Casas Bahia - Loja Online"	"data"	26
+0.833333333333333	"Casas Bahia - Loja Online"	"recebi"	66
+0.764705882352941	"Casas Bahia - Loja Online"	"empresa"	17
+1	"Casas Bahia - Loja Online"	"entregou"	10
+0.818181818181818	"Casas Bahia - Loja Online"	"cancelada"	11
+0.80952380952381	"Casas Bahia - Loja Online"	"descaso"	21
+0.882352941176471	"Casas Bahia - Loja Online"	"pontos"	17
+0.857142857142857	"Casas Bahia - Loja Online"	"chegou"	14
+0.857142857142857	"Casas Bahia - Loja Online"	"dinheiro"	14
+0.5	"Casas Bahia - Loja Online"	"editado_ra"	12
+0.7	"Casas Bahia - Loja Online"	"informações"	10
+0.666666666666667	"Casas Bahia - Loja Online"	"consigo"	18
+0.8	"Casas Bahia - Loja Online"	"paguei"	15
+0.833333333333333	"Casas Bahia - Loja Online"	"veio"	12
+0.923076923076923	"Casas Bahia - Loja Online"	"cancelamento"	13
+0.923076923076923	"Casas Bahia - Loja Online"	"recebido"	13
+0.909090909090909	"Casas Bahia - Loja Online"	"ainda"	11
+0.75	"Casas Bahia - Loja Online"	"informação"	12
+0.942307692307692	"americanas - Loja Online"	"recebi"	52
+0.955555555555556	"americanas - Loja Online"	"nota"	45
+0.955555555555556	"americanas - Loja Online"	"fiscal"	45
+1	"americanas - Loja Online"	"cadastro"	14
+1	"americanas - Loja Online"	"problema"	12
+1	"americanas - Loja Online"	"reembolso"	15
+1	"americanas - Loja Online"	"informação"	12
+0.939393939393939	"americanas - Loja Online"	"entrega"	165
+1	"americanas - Loja Online"	"devolução"	16
+0.914893617021277	"americanas - Loja Online"	"prazo"	47
+1	"americanas - Loja Online"	"conta"	15
+0.985507246376812	"americanas - Loja Online"	"atraso"	69
+0.891891891891892	"americanas - Loja Online"	"produto"	148
+0.9375	"americanas - Loja Online"	"data"	16
+0.955223880597015	"americanas - Loja Online"	"consigo"	67
+1	"americanas - Loja Online"	"contato"	13
+0.875	"americanas - Loja Online"	"americanas"	72
+1	"americanas - Loja Online"	"troca"	38
+1	"americanas - Loja Online"	"valor"	22
+1	"americanas - Loja Online"	"cumpre"	12
+0.949579831932773	"americanas - Loja Online"	"pedido"	119
+0.944444444444444	"americanas - Loja Online"	"cartão"	18
+0.9375	"americanas - Loja Online"	"entregue"	48
+0.884615384615385	"americanas - Loja Online"	"compra"	78
+0.913793103448276	"americanas - Loja Online"	"site"	58
+0.958333333333333	"americanas - Loja Online"	"dia"	24
+0.909090909090909	"americanas - Loja Online"	"ainda"	11
+0.727272727272727	"americanas - Loja Online"	"propaganda"	44
+0.764705882352941	"americanas - Loja Online"	"enganosa"	51
+1	"americanas - Loja Online"	"vale"	27
+0.951612903225806	"americanas - Loja Online"	"pagamento"	62
+1	"americanas - Loja Online"	"aprovado"	24
+0.90625	"americanas - Loja Online"	"nao"	32
+0.96551724137931	"americanas - Loja Online"	"demora"	29
+0.842105263157895	"americanas - Loja Online"	"atendimento"	19
+0.933333333333333	"americanas - Loja Online"	"defeito"	30
+0.823529411764706	"americanas - Loja Online"	"celular"	17
+0.9375	"americanas - Loja Online"	"funciona"	16
+0.956521739130435	"americanas - Loja Online"	"falta"	23
+0.866666666666667	"americanas - Loja Online"	"comprei"	30
+1	"americanas - Loja Online"	"entregaram"	12
+0.916666666666667	"americanas - Loja Online"	"nada"	12
+0.95	"americanas - Loja Online"	"dias"	20
+1	"americanas - Loja Online"	"veio"	13
+0.916666666666667	"americanas - Loja Online"	"quero"	12
+0.935483870967742	"americanas - Loja Online"	"cancelamento"	31
+0.789473684210526	"americanas - Loja Online"	"empresa"	19
+0.833333333333333	"americanas - Loja Online"	"cancelado"	12
+1	"americanas - Loja Online"	"app"	17
+1	"americanas - Loja Online"	"aprovação"	12
+0.833333333333333	"americanas - Loja Online"	"promoção"	12
+0.846153846153846	"americanas - Loja Online"	"cupom"	13
+1	"americanas - Loja Online"	"via"	12
+1	"americanas - Loja Online"	"mail"	11
+1	"americanas - Loja Online"	"erro"	12
+0.916666666666667	"americanas - Loja Online"	"cliente"	12
+0.9375	"americanas - Loja Online"	"cancelar"	16
+0.882352941176471	"americanas - Loja Online"	"loja"	17
+0.933333333333333	"americanas - Loja Online"	"chegou"	15
+1	"americanas - Loja Online"	"sac"	13
+0.8	"americanas - Loja Online"	"sobre"	10
+0.909090909090909	"americanas - Loja Online"	"editado_ra"	11
+0.9	"americanas - Loja Online"	"consta"	10
+0.944444444444444	"americanas - Loja Online"	"estorno"	18

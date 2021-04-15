@@ -1,15 +1,12 @@
 library(readr)
-info_basicas <- read_delim("info_basicas.txt", 
+info_basicas <- read_delim("info_basicas_bruto.txt", 
                            "\t", escape_double = FALSE, trim_ws = TRUE)
 
-info_reclamacoes <- read_delim("info_reclamacoes.txt", 
-                               "\t", escape_double = FALSE, trim_ws = TRUE)
 
-info_reclamacoes_avaliadas <- read_delim("info_reclamacoes_avaliadas.txt", 
+info_reclamacoes_avaliadas <- read_delim("info_reclamacoes_avaliadas_bruto.txt", 
                                          "\t", escape_double = FALSE, trim_ws = TRUE)
 
 
-info_reclamacoes<-unique(info_reclamacoes)
 str(info_basicas)
 info_reclamacoes_avaliadas<-unique(info_reclamacoes_avaliadas)
 str(info_reclamacoes_avaliadas)
@@ -33,10 +30,10 @@ head(info_basicas)
 
 ######### info_reclamacoes
 
-glimpse(info_reclamacoes)
-str(info_reclamacoes)
+glimpse(info_reclamacoes_avaliadas)
+str(info_reclamacoes_avaliadas)
 
-View(info_reclamacoes)
+View(info_reclamacoes_avaliadas)
 
 # Precisamos transformar a variável 'tempo_reclamacao' para numérica. 
 # 
@@ -54,24 +51,6 @@ View(info_reclamacoes)
 # iremos apenas extrair os números e eliminar o texto.
 # 
 # O resultado foi armazenado em uma nova coluna, chamada 'minutos'.
-
-info_reclamacoes$minutos<-
-  ifelse(
-    grepl(pattern = paste(c("horas","hora"),collapse = "|"), x = info_reclamacoes$tempo_reclamacao),
-    #se o valor tiver em horas (ou hora) irá transformar para minutos.
-    #busca apenas os números da coluna 'tempo_reclamacao' e multiplica por 60.
-    parse_number(info_reclamacoes$tempo_reclamacao)*60, 
-    ##### VERIFICAR SE ESTÁ EM DIA OU MINUTOS
-    ifelse(
-      grepl(pattern = paste(c("minuto","minutos"),collapse = "|"), x = info_reclamacoes$tempo_reclamacao),
-      #busca apenas os números da coluna 'tempo_reclamacao'
-      parse_number(info_reclamacoes$tempo_reclamacao),
-      #busca apenas os números da coluna 'tempo_reclamacao' e transforma pra minutos
-      parse_number(info_reclamacoes$tempo_reclamacao)*24*60)
-    
-  )
-
-############# Mesmo procedimento para info_reclamacoes_avaliadas
 
 
 info_reclamacoes_avaliadas$minutos<-
@@ -106,13 +85,16 @@ info_reclamacoes_avaliadas$minutos<-
 
 ########## parte "censurada"
 
-info_reclamacoes$titulo_reclamacao<-
-  gsub('Editado pelo Reclame Aqui','editado_RA',info_reclamacoes$titulo_reclamacao)
-
 info_reclamacoes_avaliadas$titulo_reclamacao<-
   gsub('Editado pelo Reclame Aqui','editado_RA',info_reclamacoes_avaliadas$titulo_reclamacao)
 
 
+###### salvar os dados
+write.table(info_basicas,"info_basicas.txt",
+            sep = "\t",fileEncoding = "utf8",row.names = F)
+
+write.table(info_reclamacoes_avaliadas,"info_reclamacoes_avaliadas.txt",
+            sep = "\t",fileEncoding = "utf8",row.names = F)
 ############ INÍCIO DA ANÁLISE
 library(tidyverse)
 library(magrittr)
@@ -182,6 +164,7 @@ library(tm)
 library(wordcloud2)
 library(tidytext)
 
+
 #Cria um id para cada Título
 info_reclamacoes_avaliadas %<>% mutate(reclamacao_id = row_number()) 
 
@@ -210,15 +193,45 @@ avaliadas_token %<>%
 
 avaliadas_token <-join(avaliadas_token,
                                        info_reclamacoes_avaliadas[,c("reclamacao_id","status_reclamacao")])
-analise_palavras<-avaliadas_token %>%
+
+avaliadas_token_empresa <- join(avaliadas_token,
+                                info_reclamacoes_avaliadas[,c("reclamacao_id","empresa")])
+
+analise_empresa_palavra <-avaliadas_token_empresa %>%
+  group_by(word,empresa) %>%
+  mutate(percentual_solucao = sum(status_reclamacao=="Resolvido")/n(),
+         qnt_palavra = n()) %>%
+  select(percentual_solucao,empresa,word,qnt_palavra) %>%
+  unique() %>%
+  ungroup()
+
+analise_geral_palavra <-avaliadas_token_empresa %>%
   group_by(word) %>%
   mutate(percentual_solucao = sum(status_reclamacao=="Resolvido")/n(),
          qnt_palavra = n()) %>%
-  select(word,percentual_solucao,qnt_palavra) %>%
-  unique()%>%
+  select(percentual_solucao,word,qnt_palavra) %>%
+  unique() %>%
   ungroup()
 
-analise_palavras %<>% filter(qnt_palavra >50)
+#filtrar apenas palavras que apareceram mais de 20x 
+analise_geral_palavra %<>% filter(qnt_palavra >20)
+
+#filtrar os resultados para as empresas somente 
+# se estiverem no resultado geral
+analise_empresa_palavra <-
+  analise_empresa_palavra[analise_empresa_palavra$word %in%
+                            analise_geral_palavra$word,]
+
+analise_empresa_palavra <-filter(analise_empresa_palavra,
+                                 qnt_palavra>9)
+
+
+## salvar essas informações para usar na visualização de dados
+write.table(analise_empresa_palavra,"analise_empresa_palavras.txt",
+            row.names = F,fileEncoding = "utf8",sep = "\t")
+
+write.table(analise_geral_palavra,"analise_geral_palavra.txt",
+            row.names = F,fileEncoding = "utf8",sep = "\t")
 
 ####### EXISTE DIFERENÇA ENTRE AS EMPRESAS?
 

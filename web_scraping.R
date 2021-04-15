@@ -8,7 +8,7 @@ library(RSelenium)
 
 # iniciar um SERVIDOR SELENIUM E O NAVEGADOR
 #colocar a mesma versão que fez download
-rD <- rsDriver(browser="chrome", port=4545L, chromever = "89.0.4389.23")
+rD <- rsDriver(browser="chrome", port=4546L, chromever = "89.0.4389.23")
 
 remDr <- rD[["client"]] #NAVEGADOR
 
@@ -181,10 +181,10 @@ remDr$close()
 rD$server$stop()
 rm(rD)
 
-write.table(info_basicas,"info_basicas.txt",sep = "\t",fileEncoding = "utf8",row.names = F)
+write.table(info_basicas,"info_basicas_bruto.txt",sep = "\t",fileEncoding = "utf8",row.names = F)
 
-write.table(info_reclamacoes,"info_reclamacoes.txt",sep = "\t",fileEncoding = "utf8",row.names = F)
+write.table(info_reclamacoes,"info_reclamacoes_bruto.txt",sep = "\t",fileEncoding = "utf8",row.names = F)
 
-write.table(info_reclamacoes_avaliadas,"info_reclamacoes_avaliadas.txt",sep = "\t",fileEncoding = "utf8",row.names = F)
+write.table(info_reclamacoes_avaliadas,"info_reclamacoes_avaliadas_bruto.txt",sep = "\t",fileEncoding = "utf8",row.names = F)
 
 ### SUBIR PARA O GITHUB
