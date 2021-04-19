@@ -3,7 +3,7 @@ title: "Como criar uma dashboard que impressiona usando o Shiny | Episódio #3"
 author: "luisotavio.pro"
 date: "12/03/2021"
 output:
-  rmarkdown::html_document:
+  rmarkdown::github_document:
     includes:
       in_header: pixel_senha.html
 theme: lumen
